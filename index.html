@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>BlueNest Care Recruitment | UK Care Staffing Agency</title>
+<meta name="description" content="BlueNest Care Recruitment Ltd — Sheffield's dedicated care staffing agency. Qualified, DBS-checked carers for care homes across South Yorkshire. Apply for care jobs or request staff today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0D2B5E;--blue:#1A4FA0;--mid:#2E6EC5;
+  --gold:#C8961E;--gold2:#E8A820;--gold-l:#FFF8E1;
+  --white:#fff;--off:#F5F7FA;--light:#E8EFF8;
+  --text:#1A1A2E;--dgray:#4A5568;--mgray:#8A9BB0;
+  --green:#0A8A5F;--green-l:#E6F7F1;
+  --red:#C0392B;
+  --shadow:0 2px 16px rgba(13,43,94,0.09);
+  --shadow-md:0 6px 32px rgba(13,43,94,0.13);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit;transition:color 0.2s}
+button{cursor:pointer;font-family:'Inter',sans-serif;border:none;transition:all 0.2s}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+
+/* ── NAV HEADER ───────────────────────────────────────────────── */
+.nav{position:sticky;top:0;z-index:999;background:var(--white);border-bottom:1px solid var(--light);box-shadow:0 1px 8px rgba(0,0,0,0.06)}
+.nav-wrap{max-width:1200px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+
+.nav-logo{font-family:'Merriweather',serif;font-weight:700;font-size:24px;color:var(--navy);display:flex;align-items:center;gap:0;letter-spacing:-0.5px}
+.nav-logo span{color:var(--gold)}
+
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--dgray);padding:8px 16px;border-radius:6px;transition:all 0.2s ease}
+.nav-links a:hover, .nav-links a.on{color:var(--navy);background:var(--off)}
+.nav-links a.on{font-weight:600}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn-nav-outline{font-size:14px;font-weight:600;color:var(--navy);border:1.5px solid var(--navy);border-radius:6px;padding:9px 20px;background:transparent}
+.btn-nav-outline:hover{background:var(--navy);color:white}
+.btn-nav-fill{font-size:14px;font-weight:600;color:white;background:var(--gold);border-radius:6px;padding:9px 20px}
+.btn-nav-fill:hover{background:var(--gold2)}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px}
+.ham span{width:22px;height:2px;background:var(--navy);border-radius:2px;display:block;transition:all 0.3s}
+.mob-menu{display:none;border-top:1px solid var(--light);background:var(--white)}
+.mob-menu.show{display:block}
+.mob-menu a{display:block;padding:14px 24px;font-size:15px;color:var(--dgray);border-bottom:1px solid var(--light)}
+.mob-menu a:hover{color:var(--navy);background:var(--off)}
+.mob-btns{padding:16px 24px;display:flex;gap:10px}
+
+/* ── PAGE ROUTER ──────────────────────────────────────────────── */
+.pg{display:none}.pg.on{display:block}
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero{background:linear-gradient(135deg,rgba(7,26,62,0.95) 0%,rgba(13,43,94,0.9) 50%,rgba(26,58,110,0.95) 100%), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;padding:100px 24px 132px;position:relative;overflow:hidden}
+.hero-wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(200,150,30,0.15);border:1px solid rgba(200,150,30,0.4);color:#F0C040;font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:24px}
+.hero-pill i{width:6px;height:6px;background:#F0C040;border-radius:50%;display:inline-block}
+.hero h1{font-family:'Merriweather',serif;font-size:clamp(30px,4vw,52px);font-weight:700;color:white;line-height:1.2;margin-bottom:20px;max-width:720px}
+.hero h1 span{color:#F0C040}
+.hero-sub{color:rgba(255,255,255,0.85);font-size:18px;line-height:1.75;max-width:600px;margin-bottom:40px}
+.hero-search{background:white;border-radius:10px;padding:6px 6px 6px 20px;display:flex;align-items:center;gap:10px;max-width:640px;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.hero-search input{flex:1;border:none;outline:none;font-size:15px;font-family:'Inter',sans-serif;color:var(--text);background:transparent}
+.hero-search input::placeholder{color:var(--mgray)}
+.hero-search select{border:none;outline:none;font-size:14px;font-family:'Inter',sans-serif;color:var(--dgray);background:transparent;padding:0 8px;border-left:1px solid var(--light);height:36px;cursor:pointer}
+.hero-search button{background:var(--gold);color:white;border:none;border-radius:7px;padding:12px 24px;font-size:15px;font-weight:600;white-space:nowrap}
+.hero-search button:hover{background:var(--gold2)}
+.hero-stats{display:flex;gap:40px;margin-top:40px;flex-wrap:wrap}
+.hero-stat{color:rgba(255,255,255,0.85)}
+.hero-stat-n{font-family:'Merriweather',serif;font-size:30px;font-weight:700;color:white;line-height:1}
+.hero-stat-l{font-size:13px;color:rgba(255,255,255,0.6);margin-top:4px}
+
+/* ── AUDIENCE SPLIT CARDS WITH PIC ON HOVER ───────────────────── */
+.split{max-width:1200px;margin:-70px auto 0;padding:0 24px;position:relative;z-index:10;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.split-card{background:white;border-radius:12px;padding:0 0 32px 0;box-shadow:var(--shadow-md);border-top:4px solid var(--navy);display:flex;flex-direction:column;gap:18px;overflow:hidden}
+.split-card.gold-top{border-top-color:var(--gold)}
+
+.split-img-box{width:100%;height:160px;overflow:hidden;position:relative;background:var(--navy)}
+.split-img-box img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease, opacity 0.5s ease;opacity:0.95}
+.split-card:hover .split-img-box img{transform:scale(1.06);opacity:0.85}
+
+.split-card h2, .split-card p, .split-card ul, .split-card .btn-solid{margin-left:32px;margin-right:32px}
+.split-card h2{font-size:22px;font-weight:700;color:var(--navy);margin-top:10px}
+.split-card p{font-size:14px;color:var(--dgray);line-height:1.7}
+.split-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.split-card ul li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--dgray)}
+.split-card ul li::before{content:'✓';color:var(--green);font-weight:700;font-size:13px;margin-top:1px;flex-shrink:0}
+
+.btn-solid{background:var(--navy);color:white;border-radius:7px;padding:12px 24px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;width:fit-content}
+.btn-solid:hover{background:var(--blue)}
+.btn-solid.gold{background:var(--gold)}
+.btn-solid.gold:hover{background:var(--gold2)}
+
+/* ── IMAGE CONTENT GRID & HOVER EFFECTS ──────────────────────── */
+.img-showcase{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px}
+.img-frame{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);background:var(--navy)}
+.img-frame img{width:100%;height:440px;object-fit:cover;display:block;transition:transform 0.5s ease, opacity 0.5s ease}
+.img-frame:hover img{transform:scale(1.06);opacity:0.9}
+.img-overlay-card{position:absolute;bottom:24px;left:24px;right:24px;background:rgba(255,255,255,0.96);backdrop-filter:blur(4px);padding:20px;border-radius:8px;box-shadow:var(--shadow-md);border-left:4px solid var(--gold);transition:transform 0.3s ease}
+.img-frame:hover .img-overlay-card{transform:translateY(-5px)}
+.img-overlay-card p{font-size:13px;font-weight:600;color:var(--navy);line-height:1.5}
+
+/* ── SECTION SCAFFOLDING ──────────────────────────────────────── */
+.sec{padding:90px 24px}
+.sec.bg{background:var(--off)}
+.sec.navy{background:var(--navy)}
+.inner{max-width:1200px;margin:0 auto}
+.sec-tag{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.sec-h{font-family:'Merriweather',serif;font-size:clamp(24px,2.8vw,38px);font-weight:700;color:var(--navy);line-height:1.25;margin-bottom:14px}
+.sec-h.w{color:white}
+.sec-p{font-size:16px;color:var(--dgray);max-width:620px;line-height:1.75;margin-bottom:48px}
+.sec-p.w{color:rgba(255,255,255,0.75)}
+.tc{text-align:center}
+.tc .sec-p{margin-left:auto;margin-right:auto}
+
+/* ── TRUST BAR ────────────────────────────────────────────────── */
+.trust{background:var(--navy);padding:18px 24px}
+.trust-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.82);font-size:13px;font-weight:500}
+.trust-item span.ic{width:26px;height:26px;background:rgba(200,150,30,0.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px}
+.trust-div{width:1px;height:20px;background:rgba(255,255,255,0.12)}
+
+/* ── GRID CARDS WITH HOVER IMAGES ─────────────────────────────── */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+
+.card{background:white;border-radius:12px;padding:0;border:1px solid var(--light);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow 0.3s,transform 0.3s}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-5px)}
+.card-img-box{width:100%;height:180px;overflow:hidden;position:relative}
+.card-img-box img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease}
+.card:hover .card-img-box img{transform:scale(1.08)}
+.card-body{padding:24px}
+.card-ic{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;margin-top:-44px;position:relative;z-index:2;box-shadow:var(--shadow)}
+.card-ic.nv{background:var(--light)}
+.card-ic.gd{background:var(--gold-l)}
+.card-ic.gr{background:var(--green-l)}
+.card h3{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:8px}
+.card p{font-size:14px;color:var(--dgray);line-height:1.7}
+
+/* ── JOB CARDS ────────────────────────────────────────────────── */
+.job-card{background:white;border:1px solid var(--light);border-radius:10px;padding:22px 24px;transition:all 0.2s;cursor:pointer}
+.job-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.job-card.hidden{display:none}
+.job-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.job-title{font-size:16px;font-weight:700;color:var(--navy)}
+.job-rate{font-family:'Merriweather',serif;font-size:16px;font-weight:700;color:var(--green);white-space:nowrap}
+.job-loc{font-size:13px;color:var(--mgray);margin-bottom:12px;display:flex;align-items:center;gap:4px}
+.job-desc{font-size:13px;color:var(--dgray);line-height:1.6;margin-bottom:14px}
+.job-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--light);color:var(--dgray)}
+.tag.urgent{background:#FEF0E0;color:#B86000}
+.tag.full{background:var(--green-l);color:var(--green)}
+.job-apply-btn{background:var(--blue);color:white;border-radius:6px;padding:9px 18px;font-size:13px;font-weight:600;width:100%;display:block;text-align:center}
+.job-apply-btn:hover{background:var(--navy)}
+
+/* ── FILTERS ──────────────────────────────────────────────────── */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;align-items:center}
+.filter-btn{background:white;border:1.5px solid var(--light);border-radius:6px;padding:8px 16px;font-size:13px;font-weight:500;color:var(--dgray)}
+.filter-btn:hover,.filter-btn.on{background:var(--navy);color:white;border-color:var(--navy)}
+.filter-count{font-size:13px;color:var(--mgray);margin-left:auto}
+
+/* ── APPLICATION FORM ─────────────────────────────────────────── */
+.form-box{background:white;border-radius:14px;padding:40px;box-shadow:var(--shadow-md);border:1px solid var(--light)}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.fg label{font-size:13px;font-weight:600;color:var(--dgray)}
+.fg input,.fg select,.fg textarea{border:1.5px solid var(--light);border-radius:7px;padding:11px 14px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);outline:none;background:var(--off);transition:border 0.2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);background:white}
+.fg textarea{resize:vertical;min-height:100px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fgrid .span2{grid-column:1/-1}
+
+/* Onboarding Success Framework styling */
+.success-box{display:none;background:white;border-radius:14px;padding:40px;box-shadow:var(--shadow-md);border:1px solid rgba(10,138,95,0.2)}
+.success-header{background:var(--green-l);border-radius:10px;padding:24px;text-align:center;margin-bottom:32px}
+.success-header h3{font-size:22px;font-weight:700;color:var(--green);margin-bottom:8px}
+.success-header p{font-size:14px;color:var(--dgray)}
+.onboard-card{border:1px solid var(--light);background:var(--off);border-radius:10px;padding:28px;position:relative}
+.onboard-tag{position:absolute;top:-12px;left:24px;background:var(--gold);color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px}
+.onboard-card h4{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;margin-top:4px}
+.onboard-card p{font-size:13px;color:var(--dgray);margin-bottom:20px;line-height:1.6}
+.secure-btn{background:var(--navy);color:white;border-radius:7px;padding:12px 24px;font-size:14px;font-weight:600;width:100%}
+.secure-btn:hover{background:var(--blue)}
+
+/* ── UPLOAD ZONE ──────────────────────────────────────────────── */
+.upload-zone{border:2px dashed var(--light);border-radius:10px;padding:28px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--off);position:relative}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--blue);background:#F0F5FF}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-icon{font-size:32px;margin-bottom:10px}
+.upload-zone h4{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.upload-zone p{font-size:12px;color:var(--mgray)}
+.upload-files{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.uf-item{background:var(--green-l);border:1px solid rgba(10,138,95,0.2);border-radius:6px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--green)}
+.uf-remove{background:none;border:none;color:var(--red);cursor:pointer;font-size:16px;font-weight:700;padding:0 4px}
+.required-docs{background:var(--gold-l);border:1px solid rgba(200,150,30,0.3);border-radius:8px;padding:16px 18px;margin-bottom:20px}
+.required-docs h4{font-size:13px;font-weight:700;color:#7A5500;margin-bottom:8px}
+.required-docs ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.required-docs ul li{font-size:12px;color:#7A5500;display:flex;align-items:center;gap:6px}
+.required-docs ul li::before{content:'📄';font-size:11px}
+
+/* ── CTA BANNER ───────────────────────────────────────────────── */
+.cta{background:linear-gradient(135deg,var(--navy),var(--blue));padding:72px 24px;text-align:center}
+.cta h2{font-family:'Merriweather',serif;font-size:clamp(24px,3vw,38px);color:white;margin-bottom:14px}
+.cta p{color:rgba(255,255,255,0.75);font-size:16px;max-width:520px;margin:0 auto 36px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-wh{background:white;color:var(--navy);border-radius:7px;padding:13px 28px;font-size:15px;font-weight:700;border:none;cursor:pointer}
+.btn-wh:hover{background:var(--off)}
+.btn-gold{background:var(--gold);color:white;border-radius:7px;padding:13px 28px;font-size:15px;font-weight:700;border:none;cursor:pointer}
+.btn-gold:hover{background:var(--gold2)}
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
+.ft{max-width:1200px;margin:0 auto}
+.ft-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr 1.2fr;gap:48px;margin-bottom:40px}
+.ft-logo-row{display:flex;align-items:center;margin-bottom:16px}
+.ft-about{font-size:13px;line-height:1.75;max-width:260px}
+.ft-col h4{font-size:13px;font-weight:700;color:white;letter-spacing:0.3px;margin-bottom:16px;text-transform:uppercase}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft-col ul li a{font-size:13px;color:rgba(255,255,255,0.6);transition:color 0.2s}
+.ft-col ul li a:hover{color:var(--gold2)}
+.ft-ci{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:9px}
+.ft-ci .ic{color:var(--gold2);flex-shrink:0;margin-top:1px}
+.ft-bottom a:hover{color:var(--gold2);background:rgba(255,255,255,0.05)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px}
+.ft-crn{color:rgba(255,255,255,0.35);font-size:11px;margin-top:6px}
+.ft-email {
+  color: inherit;
+  text-decoration: none;
+  word-break: break-all;
+  display: inline-block;
+}
+
+.ft-email:hover {
+  text-decoration: underline;
+}
+
+/* ── LEGAL ── */
+    .legal-box {
+      background: var(--white);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 48px;
+      box-shadow: var(--shadow);
+    }
+    .legal-box h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 32px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .legal-meta {
+      font-size: 13px;
+      color: var(--mgray);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .legal-box h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 20px;
+      color: var(--navy);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    .legal-box p {
+      font-size: 15px;
+      color: var(--dgray);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .legal-box ul {
+      margin-left: 24px;
+      margin-bottom: 16px;
+      color: var(--dgray);
+      font-size: 15px;
+    }
+    .legal-box li {
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+
+/* ── WHATSAPP ─────────────────────────────────────────────────── */
+.wa{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:998;transition:transform 0.2s}
+.wa:hover{transform:scale(1.1)}
+.wa svg{width:28px;height:28px;fill:white}
+
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media(max-width:960px){
+  .nav-links,.nav-actions{display:none}
+  .ham{display:flex}
+  .split{grid-template-columns:1fr;margin-top:-20px}
+  .img-showcase{grid-template-columns:1fr;gap:32px}
+  .img-frame img{height:300px}
+  .grid3{grid-template-columns:1fr 1fr}
+  .grid4{grid-template-columns:1fr 1fr}
+  .ft-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .fgrid{grid-template-columns:1fr}
+  .fgrid .span2{grid-column:auto}
+  .grid2{grid-template-columns:1fr}
+  .required-docs ul{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .grid3,.grid4{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .hero-stats{gap:24px}
+  .hero-search{flex-direction:column;padding:14px}
+  .hero-search input,.hero-search select,.hero-search button{width:100%}
+  .hero-search select{border-left:none;border-top:1px solid var(--light)}
+  .sec{padding:56px 20px}
+  .split{padding:0 16px}
+  .form-box{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<a class="wa" href="https://wa.me/447359520559" target="_blank" aria-label="WhatsApp Contact">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- HEADER BRANDING LOGO -->
+<nav class="nav">
+  <div class="nav-wrap">
+    <a href="#" onclick="nav('home')" class="nav-logo">
+      BlueNest<span>Care</span>
+    </a>
+    <div class="nav-links">
+      <a href="#" onclick="nav('home')" class="home-lnk on">Home</a>
+      <a href="#services" onclick="nav('home')" class="services-lnk">Client Services</a>
+      <a href="#" onclick="nav('jobs')" class="jobs-lnk">Find Jobs</a>
+      <a href="#" onclick="nav('about')" class="about-lnk">About Us</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-nav-outline" onclick="nav('client')">I Need Staff</button>
+      <button class="btn-nav-fill" onclick="nav('apply')">Apply for Care Jobs</button>
+    </div>
+    <button class="ham" onclick="toggleMob()" aria-label="Toggle Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <a href="#" onclick="nav('home');toggleMob()">Home</a>
+    <a href="#" onclick="nav('jobs');toggleMob()">Find Jobs</a>
+    <a href="#services" onclick="nav('home');toggleMob()">Client Services</a>
+    <a href="#about" onclick="nav('about');toggleMob()">About Us</a>
+    <div class="mob-btns">
+      <button class="btn-nav-outline" style="flex:1" onclick="nav('client');toggleMob()">I Need Staff</button>
+      <button class="btn-nav-fill" style="flex:1" onclick="nav('apply');toggleMob()">Apply Now</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ──────────────── HOME PAGE ──────────────── -->
+<div class="pg on" id="pg-home">
+  <section class="hero">
+    <div class="hero-wrap">
+      <div class="hero-pill"><i></i> Sheffield & South Yorkshire Care Staffing</div>
+      <h1>Reliable & Professional <span>Healthcare Staffing</span> You Can Trust</h1>
+      <p class="hero-sub">BlueNest Care connects qualified, DBS-checked carers with care homes across Sheffield and South Yorkshire. Flexible shifts, weekly pay, and a team that genuinely cares about you wherever you are.</p>
+      <div class="hero-search">
+        <input type="text" placeholder="Job title or keywords...">
+        <select>
+          <option>All of Sheffield</option>
+          <option>Rotherham</option>
+          <option>Doncaster</option>
+          <option>Barnsley</option>
+        </select>
+        <button type="button" onclick="nav('jobs'); if(typeof filterJobs === 'function') filterJobs();" class="YOUR_EXISTING_CLASSES_IF_ANY">Search Vacancies</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-n">100%</div><div class="hero-stat-l">DBS Compliant</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">24/7</div><div class="hero-stat-l">On-Call Support</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">Top Tier</div><div class="hero-stat-l">Hourly Pay Rates</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="split">
+    <div class="split-card">
+      <div class="split-img-box">
+        <img src="https://images.unsplash.com/photo-1691139601099-932c01ec198b?auto=format&fit=crop&w=600&q=80" alt="Hospital and Healthcare Management Facility Center">
+      </div>
+      <h2>Need Temporary Staff?</h2>
+      <p>We supply short-notice emergency shifts, block bookings, or temporary placements to keep your residential facility fully staffed with skilled professionals.</p>
+      <ul>
+        <li>Care Assistances (CAs) and Team Leaders</li>
+        <li>Specialist Healthcare Assistants (HCAs)</li>
+        <li>Rigorous compliance</li>
+      </ul>
+      <button class="btn-solid" onclick="nav('client')">Request Staff Fast →</button>
+    </div>
+    <div class="split-card gold-top">
+      <div class="split-img-box">
+        <img src="https://images.unsplash.com/photo-1758691462848-31a39258dbd8?auto=format&fit=crop&w=600&q=80" alt="Empathetic Support Carer working on job assignment">
+      </div>
+      <h2>Looking for Flexible Care Jobs?</h2>
+      <p>Build your career on your own schedule with exceptional weekly pay, rapid compliance onboarding, and dedicated agency support.</p>
+      <ul>
+        <li>Competitive, market-leading hourly rates with reliable weekly pay</li>
+        <li>Flexible shift options (Days, Nights, Weekends)</li>
+        <li>Fast-track compliance and hassle-free onboarding</li>
+      </ul>
+      <button class="btn-solid gold" onclick="nav('apply')">Submit Your CV Today →</button>
+    </div>
+  </div>
+
+  <section class="sec" id="#">
+    <div class="inner img-showcase">
+      <div>
+        <div class="sec-tag">Why BlueNest Care</div>
+        <h2 class="sec-h">Setting the Standard for Excellence in Healthcare Staffing</h2>
+        <p class="sec-p">The UK care sector faces a critical staffing shortage. BlueNest Care exists to solve it.</p>
+        <p class="sec-p">Built from the ground up by a frontline care professional who understands the daily pressures of rota gaps, BlueNest Care does things differently. We know exactly what an exceptional agency worker looks like because we’ve been on the floor ourselves. That firsthand insight shapes every recruitment standard we set, every professional we add to our register, and every shift we cover.</p>
+        <p class="sec-p" style="margin-top: -30px;">We deliver fully compliant, compassionate healthcare workers to care homes and providers across Sheffield and South Yorkshire, exactly when you need them. Every carer on our roster is thoroughly vetted, DBS-checked, Care Certificate trained, and referenced before they ever step through your door. No shortcuts. No exceptions. Reliable compliance, ready for your next shift.</p>
+      </div>
+      <div class="img-frame">
+        <img src="https://images.unsplash.com/photo-1666886573212-2de95596d509?auto=format&fit=crop&w=600&q=80" alt="Professional Nurse checking on an elderly resident">
+        <div class="img-overlay-card">
+          <p>“Our focus is simple: deliver safe, professional care environments wherever we are deployed.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="trust-in">
+      <div class="trust-item"><span class="ic">✓</span> Fully Audited Compliance Frameworks</div>
+      <div class="trust-div"></div>
+      <div class="trust-item"><span class="ic">✓</span> 24/7 UK-Based Operational Desk</div>
+      <div class="trust-div"></div>
+      <div class="trust-item"><span class="ic">✓</span> Rigorous Identity & Right to Work Checks</div>
+    </div>
+  </section>
+
+  <section class="sec bg" id="services">
+    <div class="inner tc">
+      <div class="sec-tag">Specialist Sectors</div>
+      <h2 class="sec-h">Our Staffing Specialities</h2>
+      <p class="sec-p">We maintain an active roster of multi-disciplinary healthcare workers specializing in complex care, physical rehabilitation, and clinical support.</p>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-img-box">
+            <img src="https://images.unsplash.com/photo-1765896387387-0538bc9f997e?auto=format&fit=crop&w=500&q=80" alt="Nurses reviewing chart documents">
+          </div>
+          <div class="card-body">
+            <div class="card-ic nv">🩺</div>
+            <h3>Reliable Care Professionals for Your Facility</h3>
+            <p>Compassionate and fully vetted care staff ready to support residents in care homes and individuals in supported living settings. Available for short-term cover, long-term placement, and daily living assistance with dignity and respect.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img-box">
+            <img src="https://images.unsplash.com/photo-1460620105278-b7f0516e6d65?auto=format&fit=crop&w=500&q=80" alt="Care giver helping senior citizen">
+          </div>
+          <div class="card-body">
+            <div class="card-ic gd">🏡</div>
+            <h3>Residential Care Support</h3>
+            <p>Experienced Care Assistants and Healthcare Assistants available to support your permanent team with high-quality personal care, daily living activities, and the seamless delivery of resident care plans.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img-box">
+            <img src="https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?auto=format&fit=crop&w=500&q=80" alt="Holding hands outside care home">
+          </div>
+          <div class="card-body">
+            <div class="card-ic gr">🧠</div>
+            <h3>Complex Dementia Specialists</h3>
+            <p>Highly experienced professionals certified in de-escalation techniques, positive behavioral support (PBS), and specialized sensory interventions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== JOBS PAGE ===== -->
+<div class="pg" id="pg-jobs">
+  <div class="hero" style="padding:60px 24px 50px">
+    <div class="hero-wrap">
+      <div class="hero-pill"><i></i>Care Jobs — Across Sheffield & South Yorkshire</div>
+      <h1 style="font-size:clamp(26px,3.5vw,42px)">Find Your Next<br><span>Care Role</span></h1>
+      <p class="hero-sub" style="margin-bottom:28px">Browse current openings across Sheffield and South Yorkshire. Discover a wealth of local roles. Apply in minutes. No agency fees, no waiting.</p>
+      <div class="hero-search">
+        <input type="text" id="jobs-kw" placeholder="Search role...">
+        <select id="jobs-loc">
+          <option value="">All locations</option>
+          <option>Sheffield</option>
+          <option>Rotherham</option>
+          <option>Barnsley</option>
+          <option>Doncaster</option>
+        </select>
+        <button type="button" onclick="nav('jobs'); if(typeof filterJobs === 'function') filterJobs();" class="YOUR_EXISTING_CLASSES_IF_ANY">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="inner">
+      <div class="filters" id="filters">
+        <button class="filter-btn on" onclick="filterJobs('all', this)">All roles</button>
+        <button class="filter-btn" onclick="filterJobs('hca', this)">HCA</button>
+        <button class="filter-btn" onclick="filterJobs('senior', this)">Senior Carer</button>
+        <button class="filter-btn" onclick="filterJobs('ca', this)">Care Assistant</button>
+        <button class="filter-btn" onclick="filterJobs('sw', this)">Support Worker</button>
+        <button class="filter-btn" onclick="filterJobs('leader', this)">Team Leader</button>
+        <button class="filter-btn" onclick="filterJobs('specialist', this)">Specialist</button>
+        <button class="filter-btn" onclick="filterJobs('bank', this)">Bank / On-Call</button>
+        <span class="filter-count" id="jcount">Showing 7 jobs</span>
+      </div>
+      <div class="grid3" id="jobs-grid">
+        <!-- Jobs populated dynamically below via DOM initialization script -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== APPLY PAGE ===== -->
+<div class="pg" id="pg-apply">
+  <div class="hero" style="padding:60px 24px 50px">
+    <div class="hero-wrap">
+      <div class="hero-pill"><i></i>Join BlueNest Care</div>
+      <h1 style="font-size:clamp(26px,3.5vw,42px)">Apply for<br><span>Care Work</span></h1>
+      <p class="hero-sub" style="margin-bottom:0">Complete the form below and upload your required documents. We aim to review every application within 24 hours.</p>
+    </div>
+  </div>
+
+  <div class="sec bg">
+    <div class="inner">
+      <div class="grid2">
+        
+        <!-- Application form -->
+        <div>
+          <div class="form-box">
+            <h2 style="font-family:Merriweather,serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:24px">Carer Application Form</h2>
+            <div id="app-form">
+              <div class="fgrid">
+                <div class="fg"><label>First name *</label><input type="text" id="af-first" placeholder="Blossom" required></div>
+                <div class="fg"><label>Last name *</label><input type="text" id="af-last" placeholder="Kayen" required></div>
+                <div class="fg"><label>Email address *</label><input type="email" id="af-email" placeholder="you@email.com" required></div>
+                <div class="fg"><label>Phone number *</label><input type="tel" id="af-phone" placeholder="07700 900000" required></div>
+                <div class="fg span2"><label>Role applying for *</label>
+                  <select id="af-role">
+                    <option>Healthcare Assistant (HCA)</option>
+                    <option>Senior Carer</option>
+                    <option>Care Assistant</option>
+                    <option>Support Worker</option>
+                    <option>Team Leader</option>
+                    <option>Specialist Carer</option>
+                    <option>Bank / On-Call</option>
+                  </select>
+                </div>
+                <div class="fg span2"><label>Preferred location(s)</label>
+                  <select id="af-loc">
+                    <option>Sheffield (all areas)</option>
+                    <option>Sheffield Centre</option>
+                    <option>Sheffield South</option>
+                    <option>Rotherham</option>
+                    <option>Barnsley</option>
+                    <option>Doncaster</option>
+                    <option>Anywhere in S. Yorkshire</option>
+                  </select>
+                </div>
+                <div class="fg span2"><label>Availability</label>
+                  <select id="af-avail">
+                    <option>Days only (Mon–Fri)</option>
+                    <option>Days + weekends</option>
+                    <option>Nights only</option>
+                    <option>Flexible — days, nights, weekends</option>
+                    <option>Bank / on-call only</option>
+                  </select>
+                </div>
+                <div class="fg span2"><label>Years of care experience</label>
+                  <select id="af-exp">
+                    <option>Less than 1 year</option>
+                    <option>1–2 years</option>
+                    <option>3–5 years</option>
+                    <option>5+ years</option>
+                  </select>
+                </div>
+                <div class="fg span2"><label>Tell us about yourself</label>
+                  <textarea id="af-bio" placeholder="Brief summary of your care experience, qualifications, and why you'd like to work with BlueNest Care..."></textarea>
+                </div>
+              </div>
+
+              
+              <div class="fg">
+                <label>Upload your documents *</label>
+                <div class="upload-zone" id="drop-zone">
+                  <input type="file" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" id="file-input" onchange="handleFiles(this.files)">
+                  <div class="upload-icon">📎</div>
+                  <h4>Drag &amp; drop files here, or click to browse</h4>
+                  <p>PDF, Word, JPG or PNG • Max 10MB per file • Upload as many as needed</p>
+                </div>
+                <div class="upload-files" id="file-list"></div>
+              </div>
+
+              <div class="fg" style="margin-top:8px">
+                <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;color:var(--dgray)">
+                  <input type="checkbox" id="af-consent" style="margin-top:3px;flex-shrink:0;width:16px;height:16px">
+                  I consent to BlueNest Care Recruitment Ltd processing my personal data for recruitment purposes in accordance with the UK GDPR and Data Protection Act 2018.
+                </label>
+              </div>
+
+              <button onclick="submitApp()" style="width:100%;background:var(--gold);color:white;border-radius:8px;padding:14px;font-size:16px;font-weight:700;margin-top:10px;border:none;cursor:pointer">Submit Application →</button>
+            </div>
+
+            <div class="success-box" id="app-success">
+              <div style="font-size:42px;margin-bottom:14px">🎉</div>
+              <h3>Application received!</h3>
+              <p style="margin-bottom:12px">Thank you for applying to BlueNest Care. We'll review your application and be in touch within <strong>24 hours</strong>.</p>
+              <p>In the meantime you can WhatsApp us on <strong>+44 7459 472 224</strong> or call <strong>01144 893 349</strong> if you have any questions.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side info -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div class="card" style="padding:28px">
+            <h3 style="font-family:Merriweather,serif;margin-bottom:16px">What happens next?</h3>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <div style="width:28px;height:28px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</div>
+                <div><strong style="color:var(--navy);font-size:14px">We review your application</strong><p style="font-size:13px;color:var(--dgray);margin-top:3px">Within 24 hours — we look at your experience, documents, and availability.</p></div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <div style="width:28px;height:28px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</div>
+                <div><strong style="color:var(--navy);font-size:14px">Short phone call</strong><p style="font-size:13px;color:var(--dgray);margin-top:3px">A quick 10-minute call to discuss your preferences and any outstanding documents.</p></div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <div style="width:28px;height:28px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</div>
+                <div><strong style="color:var(--navy);font-size:14px">Compliance check</strong><p style="font-size:13px;color:var(--dgray);margin-top:3px">We process your DBS check (free) and verify all compliance documents.</p></div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <div style="width:28px;height:28px;background:var(--gold);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">4</div>
+                <div><strong style="color:var(--navy);font-size:14px">Start picking up shifts</strong><p style="font-size:13px;color:var(--dgray);margin-top:3px">You're activated on the BlueNest app and can start applying for shifts immediately.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="background:var(--navy);border-color:var(--navy);padding:28px">
+            <h3 style="color:white;margin-bottom:12px;font-size:15px">Questions before applying?</h3>
+            <p style="color:rgba(255,255,255,0.75);font-size:13px;margin-bottom:18px">We're happy to answer any questions before you submit your application.</p>
+            <a href="https://wa.me/447459472224" target="_blank" style="display:flex;align-items:center;gap:8px;background:#25D366;color:white;border-radius:7px;padding:11px 16px;font-size:13px;font-weight:600;margin-bottom:10px">💬 WhatsApp us</a>
+            <a href="tel:01144893349" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);color:white;border-radius:7px;padding:11px 16px;font-size:13px;font-weight:600">📞 01144 893 349</a>
+          </div>
+          <div class="card" style="padding:24px;background:var(--green-l);border-color:rgba(10,138,95,0.2)">
+            <h3 style="color:var(--green);margin-bottom:10px;font-size:14px">✅ What we offer workers</h3>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:7px">
+              <li style="font-size:13px;color:var(--dgray);display:flex;gap:8px"><span style="color:var(--green);font-weight:700">✓</span>Weekly pay every Friday</li>
+              <li style="font-size:13px;color:var(--dgray);display:flex;gap:8px"><span style="color:var(--green);font-weight:700">✓</span>Free DBS check processing</li>
+              <li style="font-size:13px;color:var(--dgray);display:flex;gap:8px"><span style="color:var(--green);font-weight:700">✓</span>Flexible shifts — you choose</li>
+              <li style="font-size:13px;color:var(--dgray);display:flex;gap:8px"><span style="color:var(--green);font-weight:700">✓</span>Work close to home</li>
+              <li style="font-size:13px;color:var(--dgray);display:flex;gap:8px"><span style="color:var(--green);font-weight:700">✓</span>Dedicated support team</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── CLIENT BOOKING REQ FORM ──────────────── -->
+<div class="pg" id="pg-client">
+  <section class="sec bg" style="padding-top:40px">
+    <div class="inner" style="max-width:800px">
+      <div class="tc">
+        <div class="sec-tag">Care Facilities Intake Portal</div>
+        <h2 class="sec-h">Request Qualified Staffing Coverage</h2>
+        <p class="sec-p">Experiencing shortfalls or need a reliable backup supplier? Provide details below and an emergency account coordinator will deploy personnel matching your configuration requirements.</p>
+      </div>
+
+      <div class="success-box" id="clientSuccess" style="background: var(--green-l); text-align: center; display: none;">
+        <h3>📥 Staffing Placement Ticket Initialized</h3>
+        <p style="margin-top:10px; color:var(--dgray); font-size:14px;">Your scheduling request has reached our priority desk. A representative is preparing a deployment roster and will call you momentarily.</p>
+      </div>
+
+      <form class="form-box" id="clientForm" onsubmit="submitClientRequest(event)">
+        <div class="fgrid">
+          <div class="fg">
+            <label>Facility or Organisation Name *</label>
+            <input type="text" id="client-org" required placeholder="Care Home Name / Trust">
+          </div>
+          <div class="fg">
+            <label>Site Location Address (South Yorkshire) *</label>
+            <input type="text" id="client-location" required placeholder="e.g. S1 Central Sheffield">
+          </div>
+        </div>
+        <div class="fgrid">
+          <div class="fg">
+            <label>Point of Contact Name *</label>
+            <input type="text" id="client-name" required placeholder="Duty Manager / Matron">
+          </div>
+          <div class="fg">
+            <label>Direct Contact Phone Number *</label>
+            <input type="tel" id="client-phone" required placeholder="0114 123 4567">
+          </div>
+        </div>
+        <div class="fgrid">
+          <div class="fg">
+            <label>Required Deployment Resource *</label>
+            <select id="client-staff" required>
+              <option value="">-- Choose Role Profile --</option>
+              <option value="RGN Coverage">RGN Coverage</option>
+              <option value="Care Assistants">Care Assistants</option>
+              <option value="Healthcare Assistants">Healthcare Assistants</option>
+              <option value="Support Worker Roster Allocation">Support Worker Roster Allocation</option>
+              <option value="Mixed Staffing Setup">Mixed Staffing Setup (Details Below)</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Urgency Threshold *</label>
+            <select id="client-urgency" required>
+              <option value="">-- Select Urgency --</option>
+              <option value="Critical Emergency">🚨 Critical Emergency (Shift starts within 4 hours)</option>
+              <option value="Next 24-48 Hours Window">⚠️ Next 24-48 Hours Window</option>
+              <option value="Advanced Roster / Block Booking Planning">🗓️ Advanced Roster / Block Booking Planning</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Shift Directives &amp; Specific Specialities Needed</label>
+          <textarea id="client-message" placeholder="Detail total headcount, shift durations (day/night mix), specific training constraints or clinical machinery protocols required..."></textarea>
+        </div>
+        <button type="submit" id="client-submit-btn" class="btn-solid" style="width:100%; justify-content:center; margin-top:12px;">Deploy Staff Request</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<div class="pg" id="pg-about">
+
+  <div class="hero" style="padding:72px 24px 64px">
+    <div class="hero-wrap">
+      <div class="hero-pill"><i></i>Our Story</div>
+      <h1 style="font-size:clamp(28px,3.8vw,50px)">Built by a Carer.<br><span>Built for the Entire UK.</span></h1>
+      <p class="hero-sub">BlueNest Care Recruitment Ltd was founded in Sheffield by Eric Kalongo, a care sector professional who worked as a frontline carer and witnessed first-hand the chronic staffing crisis facing homes and the hardworking carers who deserved better support. What began as a local mission has grown into a national ambition: to become the UK's most trusted care staffing agency.</p>
+    </div>
+  </div>
+
+  <!-- Our story narrative -->
+  <div class="sec">
+    <div class="inner">
+
+      <!-- Founder story -->
+      <div class="grid2" style="gap:64px;margin-bottom:72px">
+        <div>
+          <div class="sec-tag">Where we started</div>
+          <h2 class="sec-h">A problem experienced from the inside</h2>
+          <p style="font-size:15px;color:var(--dgray);line-height:1.85;margin-bottom:18px">We did not build BlueNest Care from a boardroom. We built it from the care home floor, drawing on our own experience as a frontline carer. We worked the same last-minute calls, covered the same understaffed shifts, and experienced first-hand the pressures faced daily by exhausted care teams across the UK care sector.</p>
+          <p style="font-size:15px;color:var(--dgray);line-height:1.85;margin-bottom:18px">What stood out to us was not a lack of committed carers, but rather a fragmented system that failed to connect them effectively with the care homes that needed them most. Capable and dedicated carers were often left waiting for shifts, while care home managers relied on costly national agencies that had limited understanding of their residents, values, or local culture.</p>
+          <p style="font-size:15px;color:var(--dgray);line-height:1.85">BlueNest Care was founded in 2026 to address this disconnect, beginning in Sheffield, where the need was both urgent and deeply personal, and where building strong local relationships made the greatest impact.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:14px;padding:36px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.05)"></div>
+            <div style="font-size:48px;margin-bottom:16px;position:relative;z-index:1">💬</div>
+            <blockquote style="font-family:'Merriweather',serif;font-size:17px;font-weight:400;color:white;line-height:1.75;font-style:italic;margin-bottom:20px;position:relative;z-index:1">"I built the agency I wished had existed when I was a carer. One that treats workers with respect, pays them on time, and gives care homes a partner they can genuinely rely on — not just a number to call."</blockquote>
+            <div style="display:flex;align-items:center;gap:12px;position:relative;z-index:1">
+              <div style="width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--navy);font-size:16px;flex-shrink:0">EK</div>
+              <div>
+                <div style="color:white;font-weight:600;font-size:14px">Eric Kalongo</div>
+                <div style="color:rgba(255,255,255,0.65);font-size:13px">Founder &amp; Director, BlueNest Care Recruitment</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The national vision -->
+      <div style="background:var(--off);border-radius:16px;padding:48px;margin-bottom:72px;border:1px solid var(--light)">
+        <div class="sec-tag">Our national mission</div>
+        <h2 class="sec-h" style="max-width:640px">From Sheffield to every corner of the United Kingdom</h2>
+        <div class="grid2" style="gap:48px;margin-top:8px">
+          <div>
+            <p style="font-size:15px;color:var(--dgray);line-height:1.85;margin-bottom:18px">The UK care sector employs approximately 1.7 million people while facing an estimated 152,000 vacancies at any given time. With an annual staff turnover rate of around 28%, care providers nationwide face an ongoing workforce challenge—stretching from Glasgow to Cardiff, London to Leeds, across both rural care homes and urban nursing facilities</p>
+            <p style="font-size:15px;color:var(--dgray);line-height:1.85;margin-bottom:18px">BlueNest Care was built with a national vision to address this crisis head-on. While proudly rooted in Sheffield and South Yorkshire, we are building a nationwide healthcare staffing network designed to connect exceptional care professionals with the providers who need them most. Our mission is to deliver consistent staffing quality, absolute compliance transparency, and a human-centred partnership to care facilities in every postcode across the United Kingdom.</p>
+            <p style="font-size:15px;color:var(--dgray);line-height:1.85">To drive this expansion, BlueNest Care is continuously scaling its core infrastructure, including our rapid compliance vetting systems, digital shift-matching capabilities, and regional talent pipelines. This robust foundation ensures that as we grow, healthcare providers across the UK can instantly access reliable, shift-ready staff to protect their operational continuity and alleviate rota pressures.</p>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- What makes us different -->
+      <div style="margin-bottom:72px">
+        <div class="sec-tag tc">What sets us apart</div>
+        <h2 class="sec-h tc" style="margin-bottom:40px">Not just another staffing agency</h2>
+        <div class="grid3">
+          <div style="text-align:center;padding:8px">
+            <div style="width:64px;height:64px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">🎯</div>
+            <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px">Sector experience first</h3>
+            <p style="font-size:14px;color:var(--dgray);line-height:1.7">Our founders worked on the frontline. We don’t theorise about the care sector; we’ve lived it. That direct, real-world insight shapes every decision we make, every healthcare professional we register, and every shift we cover</p>
+          </div>
+          <div style="text-align:center;padding:8px">
+            <div style="width:64px;height:64px;border-radius:50%;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">📱</div>
+            <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px">Technology powered</h3>
+            <p style="font-size:14px;color:var(--dgray);line-height:1.7">The BlueNest Care app matches verified professionals to open shifts in seconds, enabling rapid coverage across the region without sacrificing quality, compliance, or continuity of care.</p>
+          </div>
+          <div style="text-align:center;padding:8px">
+            <div style="width:64px;height:64px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">🤝</div>
+            <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px">People before profit</h3>
+            <p style="font-size:14px;color:var(--dgray);line-height:1.7">We pay our healthcare professionals competitively, price our services fairly for clients, and strictly refuse to compromise compliance for margin. Doing right by people is our entire business model.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Values -->
+      <div class="sec-tag tc">Our values</div>
+      <h2 class="sec-h tc" style="margin-bottom:36px">The principles we operate by</h2>
+      <div class="grid4">
+        <div class="card" style="text-align:center;padding:28px 20px">
+          <div style="font-size:32px;margin-bottom:14px">🤝</div>
+          <h3 style="margin-bottom:8px">Trusted</h3>
+          <p style="font-size:13px">Every worker is verified. Every rate is transparent. Every promise is kept — no exceptions.</p>
+        </div>
+        <div class="card" style="text-align:center;padding:28px 20px">
+          <div style="font-size:32px;margin-bottom:14px">⚡</div>
+          <h3 style="margin-bottom:8px">Responsive</h3>
+          <p style="font-size:13px">Same-day cover is our standard service, not a premium add-on. Speed saves lives in care.</p>
+        </div>
+        <div class="card" style="text-align:center;padding:28px 20px">
+          <div style="font-size:32px;margin-bottom:14px">💷</div>
+          <h3 style="margin-bottom:8px">Fair</h3>
+          <p style="font-size:13px">Competitive pay for workers. Honest, all-inclusive rates for clients. No one is squeezed.</p>
+        </div>
+        <div class="card" style="text-align:center;padding:28px 20px">
+          <div style="font-size:32px;margin-bottom:14px">🚀</div>
+          <h3 style="margin-bottom:8px">Ambitious</h3>
+          <p style="font-size:13px">We started in Sheffield and we're building something national. The UK care crisis deserves a national solution.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CALL TO ACTION -->
+<section class="cta">
+  <div class="cta-content">
+    <h2>Be part of the BlueNest Care story</h2>
+    <p>Whether you're a carer looking for flexible work or a care home director who needs reliable staff. we'd love to hear from you, wherever you are in South Yorkshire.</p>
+    <div class="cta-btns">
+      <button class="btn-wh" onclick="nav('client')">Request staff for your home</button>
+      <button class="btn-gold" onclick="nav('apply')">Register as Candidate</button>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL CONTENT SECTIONS -->
+
+  <!-- ── PRIVACY POLICY ── -->
+  <div class="pg" id="pg-privacy">
+    <section class="sec bg">
+      <div class="inner" style="max-width:900px">
+        <div class="legal-box">
+          <h1>Privacy Policy</h1>
+          <div class="legal-meta">Last updated: June 2026 • BlueNest Care Recruitment Ltd</div>
+          
+          <p>BlueNest Care Recruitment Ltd ("we", "our", "us") is committed to protecting and respecting your privacy. This privacy policy explains how we collect, use, process, and protect your personal data when you use our recruitment services, website, or apply for care roles within the UK.</p>
+          
+          <h2>1. Data We Collect About You</h2>
+          <p>We may collect, use, store, and transfer different kinds of personal data about you, including:</p>
+          <ul>
+            <li><strong>Identity Data:</strong> First name, last name, title, date of birth, and proof of identification (passport, driving licence, or right to work document).</li>
+            <li><strong>Contact Data:</strong> Billing address, email address, telephone numbers, and residential history.</li>
+            <li><strong>Professional &amp; Compliance Data:</strong> CV, work history, references, professional certifications (NVQ, Care Certificate), Enhanced DBS status, and training records.</li>
+          </ul>
+
+          <h2>2. How We Use Your Data</h2>
+          <p>We use your information under the statutory guidelines of the UK GDPR and Data Protection Act 2018:</p>
+          <ul>
+            <li>To process and evaluate candidate applications for open healthcare vacancies.</li>
+            <li>To verify identity, qualifications, reference checks, and compliance clearances.</li>
+            <li>To link care homes requiring staffing support directly with active personnel profiles.</li>
+          </ul>
+
+          <h2>3. Data Retention and Safeguarding</h2>
+          <p>All sensitive information (including passport scans, reference details, and background checks) is encrypted and saved securely within protected cloud infrastructures with multi-factor authentication. We retain applicant and client details only as long as necessary to fulfill corporate contractual needs or to comply with statutory financial and employment records retention laws.</p>
+
+          <h2>5. Your Legal Rights</h2>
+          <p>Under UK data protection laws, you hold clear rights regarding your personal information, including the right to request access to your records, request corrections to incorrect data, object to specific processing paths, or request data erasure under certain legal parameters. To exercise any of your data protection rights, please contact us directly at at <strong>info@bluenestcare.co.uk</strong>.</p>
+
+          <button class="btn-solid" onclick="nav('home')" style="margin-top:24px">← Back to Home</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── TERMS & CONDITIONS ── -->
+  <div class="pg" id="pg-terms">
+    <section class="sec bg">
+      <div class="inner" style="max-width:900px">
+        <div class="legal-box">
+          <h1>Terms &amp; Conditions</h1>
+          <div class="legal-meta">Last updated: June 2026 • BlueNest Care Recruitment Ltd</div>
+          
+          <p>Welcome to BlueNest Care Recruitment Ltd. By accessing our platform, requesting personnel, or registering for care opportunities, you agree to comply with and be bound by the following comprehensive terms and conditions of use.</p>
+          
+          <h2>1. DEFINITIONS & INTERPRETATION</h2>
+          <p>Throughout this contract, "Agency" implies BlueNest Care Recruitment Ltd. "Client" refers to any organization, care home, hospital trust, or individual utilizing our candidate supply networks. "Candidate" refers to any healthcare worker or support worker.</p>
+          
+          <h2>2. THE CONTRACT & REGULATORY SCOPE</h2>
+          <p>2.1 These Terms constitute the entire agreement between the Agency and the Client for the supply of temporary Staff. By requesting, accepting, or engaging Staff, the Client is deemed to have accepted these Terms in full.</p>
+          <p>2.2 Supervision & CQC Boundaries: In accordance with UK care regulations, the Agency operates strictly as an employment business. The Client acknowledges that the Staff are supplied to work under the Client’s direct management, clinical direction, control, and supervision. The Client is entirely responsible for the day-to-day management, care planning, task allocation, and operational outcomes of the care delivery on their premises.</p>
+
+          <h2>3. COMPLIANCE & VETTING GUARANTEES</h2>
+          <p>3.1 The Agency warrants that all Staff deployed undergo stringent vetting prior to placement, including: verified Right to Work in the UK, an Enhanced DBS check (and/or registered Update Service tracking), comprehensive reference verification, and verified mandatory training compliance (including Safe Moving & Handling, Safeguarding, and Basic Life Support).</p>
+          <p>3.2 The Agency will provide a digital Compliance Profile containing necessary verification evidence to the Client prior to or at the commencement of a scheduled shift assignment.</p>
+          
+          <h2>4. CHARGES, PAYROLL, & INVOICING</h2>
+          <p>4.1 The Client agrees to pay the hourly charge rates agreed upon at the time of booking, which are subject to variations based on shift timing (days, nights, weekends, or bank holidays).</p>
+          <p>4.2 Invoices are issued weekly by the Agency based on signed timesheets. The Client must pay all undisputed invoices within thirty (30) days from the date of the invoice.</p>
+          <p>4.3 In compliance with UK Conduct Regulations, the Agency remains legally liable for processing and distributing timely payroll to all temporary Staff regardless of any outstanding or delayed invoice payments from the Client.</p>
+
+          <h2>5. SHIFT CANCELLATIONS & NO-SHOW MITIGATION</h2>
+          <p>5.1 If a Client cancels a confirmed shift booking with less than twenty-four (24) hours' notice, the Agency reserves the right to charge a standard cancellation fee equivalent to four (4) hours of the agreed shift rate.</p>
+          <p>5.2 The Agency enforces a mandatory 2-hour pre-shift check-in window for all Staff. In the rare event of a sudden staff emergency or absence, the Agency will make every effort to deploy an on-call backup worker immediately and notify the Client transparently.</p>
+
+          <h2>6. TEMP-TO-PERM TRANSFER FEES</h2>
+          <p>6.1 If the Client engages or employs a member of the Agency’s Staff directly or via another third party within six (6) months of that worker’s last assigned shift with the Client, the Client shall pay the Agency a standard Transfer Fee or agree to an extended period of hire, as specified in our fee schedule.</p>
+          
+          <h2>7. LIABILITY & INSURANCE</h2>
+          <p>7.1 While the Agency checks qualifications and compliance, the Staff work under the absolute direction of the Client. The Agency accepts no liability for any loss, damage, expense, or injury arising from any act, omission, or negligence of the Staff during their assignment.</p>
+          <p>7.2 The Client shall maintain comprehensive Employers' Liability, Public Liability, and Professional Indemnity insurance policies covering the temporary Staff throughout their operational duties on-site.</p>
+
+          <button class="btn-solid" onclick="nav('home')" style="margin-top:24px">← Back to Home</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── COOKIE POLICY ── -->
+  <div class="pg" id="pg-cookies">
+    <section class="sec bg">
+      <div class="inner" style="max-width:900px">
+        <div class="legal-box">
+          <h1>Cookie Policy</h1>
+          <div class="legal-meta">Last updated: June 2026 • BlueNest Care Recruitment Ltd</div>
+          
+          <p>This Cookie Policy explains how BlueNest Care Recruitment Ltd uses cookies and similar tracking protocols to recognize, analyze, and enhance your digital experiences on our recruitment platform.</p>
+          
+          <h2>1. What are Cookies?</h2>
+          <p>Cookies are small text configuration blocks saved directly into your local storage or browser engine when you access webpages.</p>
+          
+          <h2>2. Cookies We Utilize</h2>
+          <ul>
+            <li><strong>Essential Cookies:</strong> Critical infrastructure tokens required to load site pages, operate the active form trackers, and maintain secure user pathways.</li>
+            <li><strong>Performance &amp; Metrics Cookies:</strong> Anonymous analytical tracking scripts that allow our team to monitor framework performance and page navigation speed.</li>
+          </ul>
+
+          <h2>3. Managing Your Choices</h2>
+          <p>You can opt to block, clear, or deactivate cookies using your local web browser settings panel at any time. However, disabling essential operations tokens can render specific layout segments non-functional.</p>
+          
+          <button class="btn-solid" onclick="nav('home')" style="margin-top:24px">← Back to Home</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+<!-- FOOTER SECTION -->
+<footer>
+  <div class="ft">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo-row">
+          <div class="nav-logo" style="color: white;">
+            BlueNest<span>Care</span>
+          </div>
+        </div>
+        <p class="ft-about">Premium Healthcare Staffing Solutions Across South Yorkshire Providing elite healthcare professionals and seamless shift cover to residential facilities and clinical providers across Sheffield, Barnsley, Doncaster, Rotherham, and the surrounding regions.</p>
+        <div class="ft-crn">Company Registration: 17257115</div>
+      </div>
+      <div class="ft-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#" onclick="nav('home')">Home Hub</a></li>
+          <li><a href="#" onclick="nav('jobs')">Job Board</a></li>
+          <li><a href="#" onclick="nav('client')">Hire Staff</a></li>
+          <li><a href="#" onclick="nav('apply')">Register with Us</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#" onclick="nav('home')">Healthcare Assistants</a></li>
+          <li><a href="#" onclick="nav('home')">Care Assistants</a></li>
+          <li><a href="#" onclick="nav('home')">Care Support</a></li>
+          <li><a href="#" onclick="nav('home')">Short-notice Emergency Cover</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <div class="ft-ci"><span class="ic">📍</span> Sheffield Office, South Yorkshire</div>
+        <div class="ft-ci"><span class="ic">📞</span> 01144 893 349</div>
+        <div class="ft-ci"><span class="ic">✉️</span><a href="mailto:info@bluenestcare.co.uk" class="ft-email">info@bluenestcare.co.uk</a></div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div>&copy; 2026 BlueNest Care Recruitment Ltd. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#" onclick="nav('privacy')">Privacy Policy</a> 
+        <a href="#"onclick="nav('terms')">Terms &amp; Conditions</a> 
+        <a href="#"onclick="nav('cookies')">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Static job listings data configuration array to build layout matching your image preview
+const staticJobs = [
+  {
+    title: "Healthcare Assistant (HCA)",
+    rate: "£13–£17/hr",
+    loc: "Sheffield Centre • Full-time",
+    desc: "Day and night shifts available across central Sheffield care homes. Care Certificate required. Immediate start for the right candidate.",
+    cat: "hca",
+    tags: ["Sheffield", "Days & Nights", "Urgent"]
+  },
+  {
+    title: "Senior Carer",
+    rate: "£13–£17.50/hr",
+    loc: "Sheffield South • Full-time",
+    desc: "NVQ Level 2/3 required. Regular bookings with preferred homes. Weekday and weekend shifts available.",
+    cat: "senior",
+    tags: ["Sheffield", "NVQ L2/L3", "Full-time"]
+  },
+  {
+    title: "Care Team Leader",
+    rate: "£15–£19.50/hr",
+    loc: "Rotherham • Full-time",
+    desc: "Supervisory experience essential. NVQ Level 3+. Consistent bookings and premium rates for the right candidate.",
+    cat: "leader",
+    tags: ["Rotherham", "Management", "Premium"]
+  },
+  {
+    title: "Specialist Carer — Dementia",
+    rate: "£14–£18/hr",
+    loc: "Sheffield • Part-time",
+    desc: "Specialist dementia care experience required. Confident with de-escalation framework policies.",
+    cat: "specialist",
+    tags: ["Sheffield", "Dementia", "Flexible"]
+  }
+];
+
+// File state management
+    let uploadedFiles = [];
+
+    function renderJobs(jobsData) {
+      const grid = document.getElementById('jobs-grid');
+      if(!grid) return;
+      grid.innerHTML = '';
+      jobsData.forEach(job => {
+        const card = document.createElement('div');
+        card.className = 'job-card';
+        card.setAttribute('data-cat', job.cat);
+        let tagsHtml = job.tags.map(t => `<span class="tag ${t.toLowerCase() === 'urgent' ? 'urgent' : ''}">${t}</span>`).join('');
+        card.innerHTML = `
+          <div class="job-header">
+            <div class="job-title">${job.title}</div>
+            <div class="job-rate">${job.rate}</div>
+          </div>
+          <div class="job-loc">📍 ${job.loc}</div>
+          <div class="job-desc">${job.desc}</div>
+          <div class="job-tags">${tagsHtml}</div>
+          <button class="job-apply-btn" onclick="nav('apply')">Apply for this role →</button>
+        `;
+        grid.appendChild(card);
+      });
+      const countEl = document.getElementById('jcount');
+      if(countEl) {
+        countEl.innerText = `Showing ${jobsData.length} job${jobsData.length === 1 ? '' : 's'}`;
+      }
+    }
+
+    function handleFiles(files) {
+      for (let i = 0; i < files.length; i++) {
+        uploadedFiles.push(files[i]);
+      }
+      renderFileList();
+    }
+
+    function renderFileList() {
+      const list = document.getElementById('file-list');
+      if(!list) return;
+      list.innerHTML = '';
+      uploadedFiles.forEach((file, index) => {
+        const item = document.createElement('div');
+        item.className = 'uf-item';
+        item.innerHTML = `<span>📄 ${file.name}</span><button type="button" class="uf-remove" onclick="removeFile(${index})">&times;</button>`;
+        list.appendChild(item);
+      });
+    }
+
+    function removeFile(index) {
+      uploadedFiles.splice(index, 1);
+      renderFileList();
+      const inp = document.getElementById('file-input');
+      if(uploadedFiles.length === 0 && inp) inp.value = '';
+    }
+
+    // Drag & drop zone listeners safely guarded
+    const dz = document.getElementById('drop-zone');
+    if (dz) { //  THIS SAFETY CHECK PREVENTS THE CRASH
+      dz.addEventListener('dragover', e => {
+        e.preventDefault();
+        dz.classList.add('drag');
+      });
+      dz.addEventListener('dragleave', () => dz.classList.remove('drag'));
+      dz.addEventListener('drop', e => {
+        e.preventDefault();
+        dz.classList.remove('drag');
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          handleFiles(e.dataTransfer.files);
+        }
+      });
+    }
+
+    // Basic Page Router Switcher
+    function nav(targetId) {
+      document.querySelectorAll('.pg').forEach(el => el.classList.remove('on'));
+      const target = document.getElementById('pg-' + targetId);
+      if(target) {
+        target.classList.add('on');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('on'));
+      const activeLink = document.querySelector('.' + targetId + '-lnk');
+      if(activeLink) activeLink.classList.add('on');
+    }
+
+    function toggleMob() {
+       const menu = document.getElementById('mobMenu');
+       if (menu) {
+       menu.classList.toggle('show');
+      }
+   }
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  
+  <script>
+     // Initialize Supabase Client Connection
+    const SUPABASE_URL = "https://elykftkkvpailczmpksu.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVseWtmdGtrdnBhaWxjem1wa3N1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA4NTg3OTAsImV4cCI6MjA5NjQzNDc5MH0.alDaZuyfMyUgYFBtu0xKB02pPHticyLKbtQp4Vld6OQ";
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Function to send email notifications via Resend API
+async function sendEmailNotification(subject, htmlContent) {
+  try {
+    // We route this through a secure serverless worker to protect credentials
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer re_YOUR_RESEND_API_KEY" // Replace with your live Resend API Key
+      },
+      body: JSON.stringify({
+        from: "BlueNest Portal <portal@bluenestcare.co.uk>", // Must match your verified domain on Resend
+        to: ["hello@bluenestcare.co.uk"], // Your internal inbox where you want to receive alerts
+        subject: subject,
+        html: htmlContent
+      })
+    });
+
+    if (!response.ok) {
+      const errData = await response.json();
+      console.error("Email dispatch failed:", errData);
+    }
+  } catch (error) {
+    console.error("Network error attempting to send email alert:", error);
+  }
+}
+
+// ======= SECURE READ OPERATION FOR ADMIN DASHBOARD =======
+async function loadSecureAdminData() {
+  const tableBody = document.getElementById('admin-records-table');
+  if (!tableBody) return;
+  
+  tableBody.innerHTML = `<tr><td colspan="4" style="padding:20px; text-align:center; color:var(--mgray);">Querying encrypted RLS tables...</td></tr>`;
+
+  try {
+    // 1. Fetch records from both tracking points simultaneously
+    const [clientRes, applicantRes] = await Promise.all([
+      supabaseClient.from('client_requests').select('*'),
+      supabaseClient.from('applications').select('*') // Adjust to match your exact application table name if different
+    ]);
+
+    if (clientRes.error || applicantRes.error) {
+      const errMsg = (clientRes.error?.message || '') + ' ' + (applicantRes.error?.message || '');
+      tableBody.innerHTML = `<tr><td colspan="4" style="padding:20px; text-align:center; color:var(--red); font-weight:600;">Security/Policy Intercept: ${errMsg}</td></tr>`;
+      return;
+    }
+
+    // 2. Format and combine client data payload
+    const clients = (clientRes.data || []).map(item => ({
+      name: item.organization_name,
+      contact: item.contact_name,
+      subtext: item.phone,
+      badge: 'Facility Request',
+      badgeStyle: 'background: #FFF8E1; color: #C8961E;',
+      date: item.created_at
+    }));
+
+    // 3. Format and combine candidate data payload
+    const candidates = (applicantRes.data || []).map(item => ({
+      name: `${item.first_name || item.first || ''} ${item.last_name || item.last || ''}`,
+      contact: item.email,
+      subtext: item.phone || 'No phone provided',
+      badge: item.role || 'Carer Applicant',
+      badgeStyle: 'background: #E6F7F1; color: #0A8A5F;',
+      date: item.created_at
+    }));
+
+    // 4. Merge everything and sort chronologically (Newest first)
+    const allRecords = [...clients, [...candidates]].flat().sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (allRecords.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="4" style="padding:20px; text-align:center; color:var(--mgray);">No active secure items logged.</td></tr>`;
+      return;
+    }
+
+    // 5. Paint to layout rows seamlessly
+    tableBody.innerHTML = allRecords.map(rec => `
+      <tr style="border-bottom: 1px solid var(--light); height: 60px;">
+        <td style="padding: 12px; font-weight: 600; color: var(--navy);">${rec.name}</td>
+        <td style="padding: 12px;">
+          <div style="font-weight:500;">${rec.contact}</div>
+          <div style="font-size:12px; color:var(--dgray);">${rec.subtext}</div>
+        </td>
+        <td style="padding: 12px;"><span style="${rec.badgeStyle} padding:4px 10px; border-radius:4px; font-weight:600; font-size:11px; text-transform:uppercase;">${rec.badge}</span></td>
+        <td style="padding: 12px; font-family: monospace; font-size:12px; color:var(--mgray);">${new Date(rec.date).toLocaleDateString('en-GB')}</td>
+      </tr>
+    `).join('');
+
+  } catch (err) {
+    console.error("Dashboard engine error:", err);
+    tableBody.innerHTML = `<tr><td colspan="4" style="padding:20px; text-align:center; color:var(--red);">Failed to compile dashboard view.</td></tr>`;
+  }
+}
+
+  // ======= SECURE FILE LINK GENERATION =======
+  async function getSecureFileLink(filePath) {
+    // Generates a secure read link that self-destructs after 15 minutes (900 seconds)
+    const { data, error } = await supabaseClient
+      .storage
+      .from('candidate-cvs')
+      .createSignedUrl(filePath, 900);
+
+    if (error) {
+      console.error("Security retrieval block:", error.message);
+      return null;
+    }
+    
+    return data.signedUrl; // Safe to open or download!
+  }
+
+  // ======= JOBS FILTER ENGINE =======
+window.filterJobs = function() {
+  // 1. Grab the search terms from your input fields
+  const keywordInput = document.querySelector('input[placeholder*="Job title"]') || document.querySelector('input[type="text"]');
+  const locationSelect = document.querySelector('select') || { value: 'All' };
+  
+  const keyword = keywordInput ? keywordInput.value.toLowerCase().trim() : '';
+  const selectedLocation = locationSelect.value;
+
+  // 2. Check if you have active jobs data loaded in the window memory
+  if (!window.allJobsData) {
+    console.warn("Jobs data registry is empty or still initializing.");
+    return;
+  }
+
+  // 3. Filter the array based on title, description, and location constraints
+  const filtered = window.allJobsData.filter(job => {
+    const matchesKeyword = !keyword || 
+      (job.title && job.title.toLowerCase().includes(keyword)) || 
+      (job.description && job.description.toLowerCase().includes(keyword)) ||
+      (job.tags && job.tags.some(t => t.toLowerCase().includes(keyword)));
+      
+    const matchesLocation = !selectedLocation || 
+      selectedLocation === 'All' || 
+      selectedLocation.includes('Sheffield') || // Matches localized options
+      (job.location && job.location.toLowerCase().includes(selectedLocation.toLowerCase()));
+
+    return matchesKeyword && matchesLocation;
+  });
+
+  // 4. Send the filtered items back to your existing renderer grid
+  if (typeof window.renderJobs === 'function') {
+    window.renderJobs(filtered);
+  } else {
+    console.error("Critical: window.renderJobs visual engine not found.");
+  }
+}
+
+    // Make renderJobs globally accessible so the async loader can find it securely
+    window.renderJobs = function(jobsData) {
+      const grid = document.getElementById('jobs-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      jobsData.forEach(job => {
+        const card = document.createElement('div');
+        card.className = 'job-card';
+        card.setAttribute('data-cat', job.cat);
+        
+        let tagsHtml = job.tags.map(t => `
+          <span class="tag ${t.toLowerCase() === 'urgent' ? 'urgent' : ''}">${t}</span>
+        `).join('');
+        
+        card.innerHTML = `
+          <div class="job-header">
+            <div class="job-title">${job.title}</div>
+            <div class="job-rate">${job.rate}</div>
+          </div>
+          <div class="job-loc">📍 ${job.loc}</div>
+          <div class="job-desc">${job.desc}</div>
+          <div class="job-tags">${tagsHtml}</div>
+          <button class="job-apply-btn" onclick="nav('apply')">Apply for this role →</button>
+        `;
+        grid.appendChild(card);
+      });
+      
+      const countEl = document.getElementById('jcount');
+      if (countEl) {
+        countEl.innerText = `Showing ${jobsData.length} job${jobsData.length === 1 ? '' : 's'}`;
+      }
+    };
+
+    // Fetch live roles from the jobs database table
+    // Fetch live roles from the jobs database table
+  async function fetchLiveJobs() {
+    try {
+      const { data: jobs, error } = await supabaseClient
+        .from('jobs')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+
+      if (jobs && jobs.length > 0) {
+        const mappedJobs = jobs.map(row => ({
+          title: row.title,
+          rate: row.rate,
+          loc: row.loc,
+          desc: row.desc_text || row.desc,
+          cat: row.cat,
+          tags: Array.isArray(row.tags) ? row.tags : []
+        }));
+
+        // Cache live data in window memory for the search filter engine
+        window.allJobsData = mappedJobs;
+        window.renderJobs(mappedJobs);
+      } else {
+        if (typeof staticJobs !== 'undefined') {
+          window.allJobsData = staticJobs;
+          window.renderJobs(staticJobs);
+        }
+      }
+    } catch (err) {
+      console.error("Error fetching jobs from Supabase:", err.message);
+      if (typeof staticJobs !== 'undefined') {
+        window.allJobsData = staticJobs;
+        window.renderJobs(staticJobs);
+      }
+    }
+  }
+
+    // Submit multi-file application forms
+    async function submitApp() {
+      const first = document.getElementById('af-first').value.trim();
+      const last = document.getElementById('af-last').value.trim();
+      const email = document.getElementById('af-email').value.trim();
+      const phone = document.getElementById('af-phone').value.trim();
+      const consent = document.getElementById('af-consent').checked;
+
+      if (!first || !last || !email || !phone) {
+        alert('You are so close! Just give those empty required fields some love so we can make this official..');
+        return;
+      }
+
+      if (!consent) {
+        alert('You must accept the data processing consent to submit your compliance bundle.');
+        return;
+      }
+
+      const submitBtn = document.querySelector('.app-container button[onclick="submitApp()"]') || document.querySelector('button[onclick="submitApp()"]');
+      if (submitBtn) {
+        submitBtn.innerText = "Processing & Uploading Documents...";
+        submitBtn.disabled = true;
+      }
+
+      let documentsJsonArray = [];
+
+      try {
+        for (let i = 0; i < uploadedFiles.length; i++) {
+          const file = uploadedFiles[i];
+          const fileExt = file.name.split('.').pop();
+          const uniqueName = `${Date.now()}-${Math.random().toString(36).substring(2, 7)}.${fileExt}`;
+          const filePath = uniqueName;
+
+          if (submitBtn) {
+            submitBtn.innerText = `Uploading document ${i + 1} of ${uploadedFiles.length}...`;
+          }
+
+          const { data: uploadData, error: uploadError } = await supabaseClient.storage
+            .from('candidate-cvs')
+            .upload(filePath, file);
+
+          if (uploadError) {
+            throw new Error(`Upload failed for file "${file.name}": ${uploadError.message}`);
+          }
+
+          const { data: urlData } = supabaseClient.storage
+            .from('candidate-cvs')
+            .getPublicUrl(filePath);
+
+          documentsJsonArray.push({
+            document_type: file.name,
+            file_url: urlData.publicUrl
+          });
+        }
+
+        if (submitBtn) {
+          submitBtn.innerText = "Finalizing Profile...";
+        }
+
+        const { error: dbError } = await supabaseClient
+          .from('applications')
+          .insert([
+            {
+              first_name: first,
+              last_name: last,
+              email: email,
+              phone: phone,
+              documents: documentsJsonArray
+            }
+          ]);
+
+        if (dbError) {
+  throw new Error(`Database submission failed: ${dbError.message}`);
+}
+
+// 1. Alert the user it worked
+alert("All set! Thanks for applying. Sit tight while the page refreshes for you!");
+
+// 2. Automatically refresh/reload the page after 1.5 seconds to clear everything out
+setTimeout(() => {
+    location.reload();
+}, 1500);
+
+        // ... upper database insertion code ...
+        
+        if (dbError) {
+          throw new Error(`Database submission failed: ${dbError.message}`);
+        }
+
+        // --- NEW EMAIL NOTIFICATION CODE FOR CANDIDATES ---
+        const candidateSubject = `💼 NEW CANDIDATE APPLICATION: ${first} ${last}`;
+        const candidateHtml = `
+          <div style="font-family: sans-serif; padding: 20px; color: #1A1A2E; max-width: 600px; border: 1px solid #E8EFF8; border-radius: 8px;">
+            <h2 style="color: #0D2B5E; margin-bottom: 4px;">BlueNest Carer Onboarding Alert</h2>
+            <p style="color: #8A9BB0; font-size: 14px; margin-top: 0;">A new candidate has submitted their compliance application bundle.</p>
+            <hr style="border: 0; border-top: 1px solid #E8EFF8; margin: 20px 0;" />
+            
+            <table style="width: 100%; font-size: 14px; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold; width: 150px;">Full Name:</td>
+                <td style="padding: 6px 0;">${first} ${last}</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold;">Email Address:</td>
+                <td style="padding: 6px 0;"><a href="mailto:${email}">${email}</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold;">Phone Number:</td>
+                <td style="padding: 6px 0;"><a href="tel:${phone}">${phone}</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold;">Target Profile:</td>
+                <td style="padding: 6px 0; color: #0A8A5F; font-weight: 600;">${document.getElementById('af-role').value}</td>
+              </tr>
+            </table>
+            
+            <p style="margin-top: 15px; font-size: 13px; color: #4A5568;">
+              ℹ️ <em>Documents have been uploaded straight into your secure Supabase storage bucket. Review their full candidate profile on your dashboard panel.</em>
+            </p>
+          </div>
+        `;
+        sendEmailNotification(candidateSubject, candidateHtml);
+        // --- END OF EMAIL CODE ---
+        // =========================================
+
+        const formWrapper = document.getElementById('app-form-wrapper');
+        if (formWrapper) {
+           formWrapper.style.display = 'none';
+   }
+        const successBlock = document.getElementById('app-success');
+        if (successBlock) {
+          successBlock.style.display = 'block';
+        }
+
+        if (submitBtn) {
+          submitBtn.innerText = "Submit Application →";
+          submitBtn.disabled = false;
+        }
+
+      } catch (err) {
+        alert(err.message);
+        if (submitBtn) {
+          submitBtn.innerText = "Submit Application →";
+          submitBtn.disabled = false;
+        }
+      }
+    }
+// ======= CLIENT REQUEST FUNCTION =======
+
+   async function submitClientRequest(event) {
+  event.preventDefault(); 
+  
+  const submitBtn = document.getElementById('client-submit-btn');
+  if (submitBtn) {
+    submitBtn.innerText = "Processing Deployment...";
+    submitBtn.disabled = true;
+  }
+
+  const orgName = document.getElementById('client-org').value;
+  const contactName = document.getElementById('client-name').value;
+  const phoneNum = document.getElementById('client-phone').value;
+  const staffType = document.getElementById('client-staff').value;
+  const urgency = document.getElementById('client-urgency').value;
+  const location = document.getElementById('client-location').value;
+  const directives = document.getElementById('client-message').value;
+
+  const fullMessage = `Urgency: ${urgency}\nLocation: ${location}\n\nDirectives: ${directives}`;
+
+  const requestData = {
+    organization_name: orgName,
+    contact_name: contactName,
+    email: "hello@bluenestcare.co.uk", 
+    phone: phoneNum,
+    staff_type: staffType,
+    message: fullMessage
+  };
+
+  // 1. Insert row into your Supabase table
+  const { error } = await supabaseClient
+    .from('client_requests')
+    .insert([requestData]);
+
+  if (error) {
+    alert("Database sync failed: " + error.message);
+    if (submitBtn) {
+      submitBtn.innerText = "Deploy Staff Request";
+      submitBtn.disabled = false;
+    }
+    return;
+  }
+
+  // 2. Database sync succeeded! Now trigger the instant Email Notification
+  const emailSubject = `🚨 NEW STAFF REQUEST: ${orgName} (${urgency})`;
+  const emailHtml = `
+    <div style="font-family: sans-serif; padding: 20px; color: #1A1A2E; max-width: 600px; border: 1px solid #E8EFF8; border-radius: 8px;">
+      <h2 style="color: #0D2B5E; margin-bottom: 4px;">BlueNest Care Intake Notification</h2>
+      <p style="color: #8A9BB0; font-size: 14px; margin-top: 0;">A new staffing deployment request has been initialized.</p>
+      <hr style="border: 0; border-top: 1px solid #E8EFF8; margin: 20px 0;" />
+      
+      <table style="width: 100%; font-size: 14px; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 6px 0; font-weight: bold; width: 150px;">Organisation:</td>
+          <td style="padding: 6px 0;">${orgName}</td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; font-weight: bold;">Location/Address:</td>
+          <td style="padding: 6px 0;">${location}</td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; font-weight: bold;">Contact Person:</td>
+          <td style="padding: 6px 0;">${contactName}</td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; font-weight: bold;">Phone Number:</td>
+          <td style="padding: 6px 0;"><a href="tel:${phoneNum}">${phoneNum}</a></td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; font-weight: bold;">Required Profile:</td>
+          <td style="padding: 6px 0; color: #1A4FA0; font-weight: 600;">${staffType}</td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; font-weight: bold;">Urgency Threshold:</td>
+          <td style="padding: 6px 0;"><span style="background: #FFF8E1; color: #C8961E; padding: 2px 8px; border-radius: 4px; font-weight: bold;">${urgency}</span></td>
+        </tr>
+      </table>
+
+      <hr style="border: 0; border-top: 1px solid #E8EFF8; margin: 20px 0;" />
+      <h3 style="color: #0D2B5E; font-size: 15px; margin-bottom: 8px;">Shift Directives & Specialities:</h3>
+      <p style="background: #F5F7FA; padding: 12px; border-radius: 6px; font-size: 13px; white-space: pre-line; line-height: 1.5; margin: 0;">${directives || 'No specific directives provided.'}</p>
+    </div>
+  `;
+
+  // Fire off the email in the background without making the user wait
+  sendEmailNotification(emailSubject, emailHtml);
+
+  // 3. Hide form element and show success card smoothly
+  document.getElementById('clientForm').style.display = 'none';
+  document.getElementById('clientSuccess').style.display = 'block';
+}
+
+    // Trigger loading on window mount
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchLiveJobs();
+    });
+  </script>
+</body>
+</html>
