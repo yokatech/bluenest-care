@@ -283,11 +283,6 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
       line-height: 1.7;
     }
 
-/* ── WHATSAPP ─────────────────────────────────────────────────── */
-.wa{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:998;transition:transform 0.2s}
-.wa:hover{transform:scale(1.1)}
-.wa svg{width:28px;height:28px;fill:white}
-
 
 /* ── RESPONSIVE ───────────────────────────────────────────────── */
 @media(max-width:960px){
@@ -319,10 +314,6 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
 </head>
 <body>
 
-<a class="wa" href="https://wa.me/447359520559" target="_blank" aria-label="WhatsApp Contact">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>
-
 <!-- HEADER BRANDING LOGO -->
 <nav class="nav">
   <div class="nav-wrap">
@@ -336,6 +327,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
       <a href="#" onclick="nav('about')" class="about-lnk">About Us</a>
     </div>
     <div class="nav-actions">
+      <a href="bluenest-ai.html" class="btn-nav-outline" id="staffPortalBtn" style="border-color:var(--mid);color:var(--mid);display:none">🔐 Staff Portal</a>
       <button class="btn-nav-outline" onclick="nav('client')">I Need Staff</button>
       <button class="btn-nav-fill" onclick="nav('apply')">Apply for Care Jobs</button>
     </div>
@@ -348,6 +340,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
     <a href="#" onclick="nav('jobs');toggleMob()">Find Jobs</a>
     <a href="#services" onclick="nav('home');toggleMob()">Client Services</a>
     <a href="#about" onclick="nav('about');toggleMob()">About Us</a>
+    <a href="bluenest-ai.html" id="staffPortalBtnMob" style="display:none">🔐 Staff Portal</a>
     <div class="mob-btns">
       <button class="btn-nav-outline" style="flex:1" onclick="nav('client');toggleMob()">I Need Staff</button>
       <button class="btn-nav-fill" style="flex:1" onclick="nav('apply');toggleMob()">Apply Now</button>
@@ -613,7 +606,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
               <div style="font-size:42px;margin-bottom:14px">🎉</div>
               <h3>Application received!</h3>
               <p style="margin-bottom:12px">Thank you for applying to BlueNest Care. We'll review your application and be in touch within <strong>24 hours</strong>.</p>
-              <p>In the meantime you can WhatsApp us on <strong>+44 7359 520 559</strong> or call <strong>01144 893 349</strong> if you have any questions.</p>
+              <p>In the meantime you can call us on <strong>0114 489 3349</strong> or email <strong>hello@bluenestcare.co.uk</strong> if you have any questions.</p>
             </div>
           </div>
         </div>
@@ -644,8 +637,8 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
           <div class="card" style="background:var(--navy);border-color:var(--navy);padding:28px">
             <h3 style="color:white;margin-bottom:12px;font-size:15px">Questions before applying?</h3>
             <p style="color:rgba(255,255,255,0.75);font-size:13px;margin-bottom:18px">We're happy to answer any questions before you submit your application.</p>
-            <a href="https://wa.me/447359520559" target="_blank" style="display:flex;align-items:center;gap:8px;background:#25D366;color:white;border-radius:7px;padding:11px 16px;font-size:13px;font-weight:600;margin-bottom:10px">💬 WhatsApp us</a>
-            <a href="tel:01144893349" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);color:white;border-radius:7px;padding:11px 16px;font-size:13px;font-weight:600">📞 01144 893 349</a>
+            <a href="tel:01144893349" style="display:flex;align-items:center;gap:8px;background:var(--gold);color:white;border-radius:7px;padding:11px 16px;font-size:13px;font-weight:600;margin-bottom:10px">📞 0114 489 3349</a>
+            <a href="mailto:hello@bluenestcare.co.uk" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);color:white;border-radius:7px;padding:11px 16px;font-size:13px;font-weight:600">✉️ hello@bluenestcare.co.uk</a>
           </div>
           <div class="card" style="padding:24px;background:var(--green-l);border-color:rgba(10,138,95,0.2)">
             <h3 style="color:var(--green);margin-bottom:10px;font-size:14px">✅ What we offer workers</h3>
@@ -704,7 +697,6 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
             <label>Required Deployment Resource *</label>
             <select id="client-staff" required>
               <option value="">-- Choose Role Profile --</option>
-              <option value="RGN Coverage">RGN Coverage</option>
               <option value="Care Assistants">Care Assistants</option>
               <option value="Healthcare Assistants">Healthcare Assistants</option>
               <option value="Support Worker Roster Allocation">Support Worker Roster Allocation</option>
@@ -715,7 +707,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
             <label>Urgency Threshold *</label>
             <select id="client-urgency" required>
               <option value="">-- Select Urgency --</option>
-              <option value="Critical Emergency">🚨 Critical Emergency (Shift starts within 4 hours)</option>
+              <option value="Critical Emergency">🚨 Critical Emergency (Shift starts within 6 hours)</option>
               <option value="Next 24-48 Hours Window">⚠️ Next 24-48 Hours Window</option>
               <option value="Advanced Roster / Block Booking Planning">🗓️ Advanced Roster / Block Booking Planning</option>
             </select>
@@ -738,7 +730,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
     <div class="hero-wrap">
       <div class="hero-pill"><i></i>Our Story</div>
       <h1 style="font-size:clamp(28px,3.8vw,50px)">Built by a Carer.<br><span>Built for the Entire UK.</span></h1>
-      <p class="hero-sub">BlueNest Care Recruitment Ltd was founded in Sheffield by Eric Kalongo, a care sector professional who worked as a frontline carer and witnessed first-hand the chronic staffing crisis facing homes and the hardworking carers who deserved better support. What began as a local mission has grown into a national ambition: to become the UK's most trusted care staffing agency.</p>
+      <p class="hero-sub">BlueNest Care Recruitment Ltd was founded in Sheffield by Eric Kalongo, a care sector professional who worked as a frontline carer and witnessed first-hand the chronic staffing crisis facing homes. Having seen how much hardworking carers deserve better support, Eric launched BlueNest with a clear, national ambition: to build the UK's most trusted care staffing agency, starting right here in our local community.</p>
     </div>
   </div>
 
@@ -759,7 +751,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
           <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:14px;padding:36px;position:relative;overflow:hidden">
             <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.05)"></div>
             <div style="font-size:48px;margin-bottom:16px;position:relative;z-index:1">💬</div>
-            <blockquote style="font-family:'Merriweather',serif;font-size:17px;font-weight:400;color:white;line-height:1.75;font-style:italic;margin-bottom:20px;position:relative;z-index:1">"I built the agency I wished had existed when I was a carer. One that treats workers with respect, pays them on time, and gives care homes a partner they can genuinely rely on — not just a number to call."</blockquote>
+            <blockquote style="font-family:'Merriweather',serif;font-size:17px;font-weight:400;color:white;line-height:1.75;font-style:italic;margin-bottom:20px;position:relative;z-index:1">"I founded BlueNest Care to be the agency I always wished had existed when I started as a carer. Our mission is simple: to treat workers with genuine respect, ensure everyone is paid accurately and on time, and give care homes a partner they can truly rely on, not just another agency number to call."</blockquote>
             <div style="display:flex;align-items:center;gap:12px;position:relative;z-index:1">
               <div style="width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--navy);font-size:16px;flex-shrink:0">EK</div>
               <div>
@@ -777,7 +769,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
         <h2 class="sec-h" style="max-width:640px">From Sheffield to every corner of the United Kingdom</h2>
         <div class="grid2" style="gap:48px;margin-top:8px">
           <div>
-            <p style="font-size:15px;color:var(--dgray);line-height:1.85;margin-bottom:18px">The UK care sector employs approximately 1.7 million people while facing an estimated 152,000 vacancies at any given time. With an annual staff turnover rate of around 28%, care providers nationwide face an ongoing workforce challenge—stretching from Glasgow to Cardiff, London to Leeds, across both rural care homes and urban nursing facilities</p>
+            <p style="font-size:15px;color:var(--dgray);line-height:1.85;margin-bottom:18px">The UK care sector employs approximately 1.7 million people while facing an estimated 152,000 vacancies at any given time. With an annual staff turnover rate of around 28%, care providers nationwide face an ongoing workforce challenge stretching from Glasgow to Cardiff, London to Leeds, across both rural care homes and urban nursing facilities</p>
             <p style="font-size:15px;color:var(--dgray);line-height:1.85;margin-bottom:18px">BlueNest Care was built with a national vision to address this crisis head-on. While proudly rooted in Sheffield and South Yorkshire, we are building a nationwide healthcare staffing network designed to connect exceptional care professionals with the providers who need them most. Our mission is to deliver consistent staffing quality, absolute compliance transparency, and a human-centred partnership to care facilities in every postcode across the United Kingdom.</p>
             <p style="font-size:15px;color:var(--dgray);line-height:1.85">To drive this expansion, BlueNest Care is continuously scaling its core infrastructure, including our rapid compliance vetting systems, digital shift-matching capabilities, and regional talent pipelines. This robust foundation ensures that as we grow, healthcare providers across the UK can instantly access reliable, shift-ready staff to protect their operational continuity and alleviate rota pressures.</p>
           </div>
@@ -815,7 +807,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
         <div class="card" style="text-align:center;padding:28px 20px">
           <div style="font-size:32px;margin-bottom:14px">🤝</div>
           <h3 style="margin-bottom:8px">Trusted</h3>
-          <p style="font-size:13px">Every worker is verified. Every rate is transparent. Every promise is kept — no exceptions.</p>
+          <p style="font-size:13px">Every worker is verified. Every rate is transparent. Every promise is kept no exceptions.</p>
         </div>
         <div class="card" style="text-align:center;padding:28px 20px">
           <div style="font-size:32px;margin-bottom:14px">⚡</div>
@@ -825,7 +817,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
         <div class="card" style="text-align:center;padding:28px 20px">
           <div style="font-size:32px;margin-bottom:14px">💷</div>
           <h3 style="margin-bottom:8px">Fair</h3>
-          <p style="font-size:13px">Competitive pay for workers. Honest, all-inclusive rates for clients. No one is squeezed.</p>
+          <p style="font-size:13px">Competitive pay for workers. Honest, all inclusive rates for clients. No one is squeezed.</p>
         </div>
         <div class="card" style="text-align:center;padding:28px 20px">
           <div style="font-size:32px;margin-bottom:14px">🚀</div>
@@ -882,7 +874,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
           <p>All sensitive information (including passport scans, reference details, and background checks) is encrypted and saved securely within protected cloud infrastructures with multi-factor authentication. We retain applicant and client details only as long as necessary to fulfill corporate contractual needs or to comply with statutory financial and employment records retention laws.</p>
 
           <h2>5. Your Legal Rights</h2>
-          <p>Under UK data protection laws, you hold clear rights regarding your personal information, including the right to request access to your records, request corrections to incorrect data, object to specific processing paths, or request data erasure under certain legal parameters. To exercise any of your data protection rights, please contact us directly at at <strong>info@bluenestcare.co.uk</strong>.</p>
+          <p>Under UK data protection laws, you hold clear rights regarding your personal information, including the right to request access to your records, request corrections to incorrect data, object to specific processing paths, or request data erasure under certain legal parameters. To exercise any of your data protection rights, please contact us directly at <strong>info@bluenestcare.co.uk</strong>.</p>
 
           <button class="btn-solid" onclick="nav('home')" style="margin-top:24px">← Back to Home</button>
         </div>
@@ -996,12 +988,12 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
       <div class="ft-col">
         <h4>Contact</h4>
         <div class="ft-ci"><span class="ic">📍</span> Sheffield Office, South Yorkshire</div>
-        <div class="ft-ci"><span class="ic">📞</span> 01144 893 349</div>
-        <div class="ft-ci"><span class="ic">✉️</span><a href="mailto:info@bluenestcare.co.uk" class="ft-email">info@bluenestcare.co.uk</a></div>
+        <div class="ft-ci"><span class="ic">📞</span> 0114 489 3349</div>
+        <div class="ft-ci"><span class="ic">✉️</span><a href="mailto:hello@bluenestcare.co.uk" class="ft-email">hello@bluenestcare.co.uk</a></div>
       </div>
     </div>
     <div class="ft-bottom">
-      <div>&copy; 2026 BlueNest Care Recruitment Ltd. All rights reserved.</div>
+      <div id="ftCopyright" style="cursor:default;user-select:none">&copy; 2026 BlueNest Care Recruitment Ltd. All rights reserved.</div>
       <div class="footer-links">
         <a href="#" onclick="nav('privacy')">Privacy Policy</a> 
         <a href="#"onclick="nav('terms')">Terms &amp; Conditions</a> 
@@ -1140,7 +1132,53 @@ const staticJobs = [
        menu.classList.toggle('show');
       }
    }
-  </script>
+  
+
+// ===== STAFF PORTAL — HIDDEN ACCESS =====
+// The portal button is invisible to the public. Three quiet ways in for the team:
+//   1. Keyboard: press Ctrl + Shift + B anywhere on the site (desktop)
+//   2. Mobile:   tap the footer copyright line 5 times quickly
+//   3. Bookmark: visit bluenestcare.co.uk/#staff — the nav button appears for that visit
+// Note: this is discretion, not security. Real security is the portal login itself.
+const PORTAL_URL = 'bluenest-ai.html';
+
+function revealPortalButtons() {
+  const a = document.getElementById('staffPortalBtn');
+  const b = document.getElementById('staffPortalBtnMob');
+  if (a) a.style.display = '';
+  if (b) b.style.display = '';
+}
+function openPortal() { window.location.href = PORTAL_URL; }
+
+// 1. Keyboard shortcut (desktop)
+document.addEventListener('keydown', function (e) {
+  if (e.ctrlKey && e.shiftKey && (e.key === 'B' || e.key === 'b')) {
+    e.preventDefault();
+    openPortal();
+  }
+});
+
+// 2. Five quick taps on the footer copyright (mobile-friendly)
+(function () {
+  let taps = 0, timer = null;
+  const el = document.getElementById('ftCopyright');
+  if (!el) return;
+  el.addEventListener('click', function () {
+    taps++;
+    clearTimeout(timer);
+    timer = setTimeout(function () { taps = 0; }, 2500);
+    if (taps >= 5) { taps = 0; clearTimeout(timer); openPortal(); }
+  });
+})();
+
+// 3. Bookmarkable reveal: #staff or ?staff shows the nav button
+if (window.location.hash === '#staff' || /[?&]staff\b/.test(window.location.search)) {
+  revealPortalButtons();
+}
+window.addEventListener('hashchange', function () {
+  if (window.location.hash === '#staff') revealPortalButtons();
+});
+</script>
 
 
 
@@ -1150,34 +1188,37 @@ const staticJobs = [
      // Initialize Supabase Client Connection
     const SUPABASE_URL = "https://elykftkkvpailczmpksu.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVseWtmdGtrdnBhaWxjem1wa3N1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA4NTg3OTAsImV4cCI6MjA5NjQzNDc5MH0.alDaZuyfMyUgYFBtu0xKB02pPHticyLKbtQp4Vld6OQ";
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    // Function to send email notifications via Resend API
-async function sendEmailNotification(subject, htmlContent) {
-  try {
-    // We route this through a secure serverless worker to protect credentials
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer re_YOUR_RESEND_API_KEY" // Replace with your live Resend API Key
-      },
-      body: JSON.stringify({
-        from: "BlueNest Portal <portal@bluenestcare.co.uk>", // Must match your verified domain on Resend
-        to: ["hello@bluenestcare.co.uk"], // Your internal inbox where you want to receive alerts
-        subject: subject,
-        html: htmlContent
-      })
-    });
-
-    if (!response.ok) {
-      const errData = await response.json();
-      console.error("Email dispatch failed:", errData);
+    let supabaseClient = null;
+    try {
+      supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } catch (e) {
+      console.warn("Supabase library failed to load — job board falls back to static listings.", e);
     }
-  } catch (error) {
-    console.error("Network error attempting to send email alert:", error);
-  }
-}
+
+    // Send email notifications via the secure Supabase Edge Function.
+    // The Resend API key lives ONLY on the server as a secret — never in this file.
+    async function sendEmailNotification(subject, htmlContent, to) {
+      try {
+        const response = await fetch(`${SUPABASE_URL}/functions/v1/send-email`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+          },
+          body: JSON.stringify({
+            to: to || ["hello@bluenestcare.co.uk"],
+            subject: subject,
+            html: htmlContent
+          })
+        });
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          console.error("Email dispatch failed:", errData);
+        }
+      } catch (error) {
+        console.error("Network error attempting to send email alert:", error);
+      }
+    }
 
 // ======= SECURE READ OPERATION FOR ADMIN DASHBOARD =======
 async function loadSecureAdminData() {
@@ -1338,6 +1379,7 @@ window.filterJobs = function() {
     // Fetch live roles from the jobs database table
   async function fetchLiveJobs() {
     try {
+      if (!supabaseClient) throw new Error("Supabase client unavailable");
       const { data: jobs, error } = await supabaseClient
         .from('jobs')
         .select('*')
@@ -1445,24 +1487,10 @@ window.filterJobs = function() {
           ]);
 
         if (dbError) {
-  throw new Error(`Database submission failed: ${dbError.message}`);
-}
-
-// 1. Alert the user it worked
-alert("All set! Thanks for applying. Sit tight while the page refreshes for you!");
-
-// 2. Automatically refresh/reload the page after 1.5 seconds to clear everything out
-setTimeout(() => {
-    location.reload();
-}, 1500);
-
-        // ... upper database insertion code ...
-        
-        if (dbError) {
           throw new Error(`Database submission failed: ${dbError.message}`);
         }
 
-        // --- NEW EMAIL NOTIFICATION CODE FOR CANDIDATES ---
+        // --- EMAIL NOTIFICATION FOR CANDIDATES ---
         const candidateSubject = `💼 NEW CANDIDATE APPLICATION: ${first} ${last}`;
         const candidateHtml = `
           <div style="font-family: sans-serif; padding: 20px; color: #1A1A2E; max-width: 600px; border: 1px solid #E8EFF8; border-radius: 8px;">
@@ -1498,10 +1526,8 @@ setTimeout(() => {
         // --- END OF EMAIL CODE ---
         // =========================================
 
-        const formWrapper = document.getElementById('app-form-wrapper');
-        if (formWrapper) {
-           formWrapper.style.display = 'none';
-   }
+        const formEl = document.getElementById('app-form');
+        if (formEl) formEl.style.display = 'none';
         const successBlock = document.getElementById('app-success');
         if (successBlock) {
           successBlock.style.display = 'block';
