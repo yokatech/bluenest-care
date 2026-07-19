@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BlueNest AI | Intelligent Workforce Management</title>
+<title>BlueNest AI | Workforce Management</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1713,7 +1713,7 @@
   <nav class="land-nav">
     <div class="land-nav-wrap">
       <div class="logo" style="cursor:default;">
-        <div class="logo-mark">B</div>
+        <div class="logo-mark">AI</div>
         <div>
           <div>BlueNest<span style="color:var(--blue-500);">AI</span></div>
           <div class="logo-sub">Workforce Platform</div>
@@ -1730,7 +1730,7 @@
   <div class="land-hero">
     <div class="land-eyebrow">Internal platform · BlueNest Care Recruitment Ltd</div>
     <h1 class="land-h1">The AI engine behind <span class="grad">BlueNest Care</span></h1>
-    <p class="land-sub">One secure workspace where AI screens candidates, answers emails, runs conversational interviews, tracks compliance and matches people to shifts while your team focuses on other tasks.</p>
+    <p class="land-sub">One secure workspace where AI screens candidates, answers emails, runs conversational interviews, tracks compliance and matches people to shifts while your team focuses on relationships.</p>
 
     <div class="land-shot">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
@@ -1750,7 +1750,7 @@
     <h2 class="land-sec-title">Everything a modern care agency runs on</h2>
     <p class="land-sec-sub">Built for the way BlueNest works — from Sheffield to every client we serve</p>
     <div class="land-features">
-      <div class="land-feature"><div class="fi">📧</div><h3>Email Studio</h3><p>AI reads incoming emails, understands what's being asked, and sends a professional reply in your name automatically, or after your approval.</p></div>
+      <div class="land-feature"><div class="fi">📧</div><h3>Email Studio</h3><p>AI reads incoming emails, understands what's being asked, and sends a professional reply in your name — automatically, or after your approval.</p></div>
       <div class="land-feature"><div class="fi">🎙️</div><h3>Human-feel AI interviews</h3><p>Conversational pre-screening that candidates rate 4.7/5 for feeling like a real chat, not a form.</p></div>
       <div class="land-feature"><div class="fi">💼</div><h3>Live vacancy matching</h3><p>Every applicant is ranked against every open role in real time, with shortlists ready to send to clients.</p></div>
       <div class="land-feature"><div class="fi">🛡️</div><h3>Compliance on autopilot</h3><p>DBS, right-to-work and training expiries tracked continuously, with reminders sent before anything lapses.</p></div>
@@ -1758,7 +1758,7 @@
   </div>
 
   <div class="land-footer">
-    © 2026 BlueNest Care Recruitment Ltd · Sheffield, UK · Access restricted to authorised team members
+    © 2026 BlueNest Care Recruitment Ltd ·UK · Access restricted to authorised team members
   </div>
 </div>
 
@@ -1787,7 +1787,7 @@
         <label class="form-label">Password</label>
         <input class="form-input" id="authPassword" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')submitAuth()" />
       </div>
-      <div style="font-size:12px; color:var(--slate-400); line-height:1.5;" id="authHint">Team access only. New signups need owner approval before first login.<br>Offline demo: <strong>eric@bluenestcare.co.uk</strong> / <strong>bluenest2026</strong></div>
+      <div style="font-size:12px; color:var(--slate-400); line-height:1.5;" id="authHint">Team access only. New signups need owner approval before first login.</div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-primary" style="width:100%;" id="authSubmitBtn" onclick="submitAuth()">Log in</button>
@@ -2909,13 +2909,23 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group" style="margin-bottom:0;">
+        <div class="form-group">
           <label class="form-label">Skills (comma-separated)</label>
           <input class="form-input" id="ncSkills" placeholder="e.g. Dementia Care, DBS Valid" />
         </div>
-        <div class="form-group" style="margin-bottom:0;">
+        <div class="form-group">
           <label class="form-label">City</label>
           <input class="form-input" id="ncCity" placeholder="e.g. Sheffield" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Email</label>
+          <input class="form-input" id="ncEmail" type="email" placeholder="candidate@email.com" />
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Phone</label>
+          <input class="form-input" id="ncPhone" placeholder="07…" />
         </div>
       </div>
     </div>
@@ -3333,7 +3343,7 @@
   }
 
   async function toggleVacancyLive(id) {
-    const v = vacancies.find(x => x.id === id || x.id === 'cloud-' + id);
+    const v = vacancies.find(x => String(x.id) === String(id) || x.id === 'cloud-' + id);
     if (!v) return;
     if (!v.cloudId) {
       const ok = await publishVacancyToWebsite(v);
@@ -3385,7 +3395,7 @@
     grid.innerHTML = list.map(v => {
       const [pillClass, pillText] = pillMap[v.status];
       return `
-      <div class="vacancy-card" onclick="openDrawer(${v.id})" style="cursor:pointer;">
+      <div class="vacancy-card" onclick="openDrawer('${v.id}')" style="cursor:pointer;">
         <div class="vacancy-header">
           <div>
             <div class="vacancy-title">${v.title}</div>
@@ -3445,7 +3455,7 @@
   }
 
   function openDrawer(id) {
-    const v = vacancies.find(x => x.id === id);
+    const v = vacancies.find(x => String(x.id) === String(id));
     if (!v) return;
     document.getElementById('drawerTitle').textContent = v.title;
     document.getElementById('drawerSub').textContent = v.client + ' · ' + v.city + ' · ' + v.pay + ' · ' + v.shift;
@@ -3835,6 +3845,51 @@
     { name:"David O'Connor", role:'Healthcare Assistant', years:3, tags:['Elderly Care','DBS Expiring','First Aid'], city:'Liverpool', notice:'⚡ Immediate', score:78, grad:'#EF4444,#B91C1C', top:false, compliant:false, available:true, interviewed:false }
   ];
 
+
+  // ====== CANDIDATE <-> WEBSITE SYNC (shared `applications` table) ======
+  // Applications submitted on bluenestcare.co.uk land in Supabase.
+  // On login, this pulls them into the Candidates tab so nothing is missed.
+  function appRowToCandidate(row) {
+    const grads = ['#3B82F6,#1E40AF','#8B5CF6,#6D28D9','#10B981,#047857','#F59E0B,#D97706','#06B6D4,#0E7490'];
+    const name = ((row.first_name || '') + ' ' + (row.last_name || '')).trim() || 'Unnamed applicant';
+    const docs = Array.isArray(row.documents) ? row.documents.length : 0;
+    const when = row.created_at ? new Date(row.created_at).toLocaleDateString('en-GB', { day:'numeric', month:'short' }) : '';
+    return {
+      name,
+      cloudId: row.id,
+      email: row.email || '',
+      phone: row.phone || '',
+      role: 'Website applicant' + (when ? ' · applied ' + when : ''),
+      years: 0,
+      tags: ['📥 New application', docs ? docs + ' document' + (docs>1?'s':'') + ' uploaded' : 'No documents yet', (row.status || 'new')],
+      city: 'Awaiting screening call',
+      notice: '⚡ New',
+      score: 75,
+      grad: grads[name.length % grads.length],
+      top: false, compliant: false, available: true, interviewed: false
+    };
+  }
+
+  async function syncCandidatesFromCloud() {
+    if (!sb || !sbSession) return;
+    try {
+      const { data: rows, error } = await sb.from('applications').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      if (rows && rows.length) {
+        candidateData.length = 0;
+        rows.forEach(r => candidateData.push(appRowToCandidate(r)));
+        renderCandidates();
+        const badge = document.querySelector('[data-page="candidates"] .nav-badge');
+        if (badge) badge.textContent = rows.filter(r => (r.status || 'new') === 'new').length || rows.length;
+        showToast('success', 'Applications synced', rows.length + ' website application' + (rows.length===1?'':'s') + ' loaded into Candidates');
+      } else {
+        showToast('info', 'No website applications yet', 'When someone applies on bluenestcare.co.uk, they will appear in Candidates automatically');
+      }
+    } catch (e) {
+      console.warn('Application sync failed, keeping local data:', e);
+    }
+  }
+
   function renderCandidates() {
     const listEl = document.getElementById('candidateList');
     const chip = document.querySelector('#candidateFilters .filter-chip.active');
@@ -3881,10 +3936,12 @@
     document.getElementById('drawerBody').innerHTML = `
       <div style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
         <button class="btn btn-primary" style="flex:1;" onclick="showToast('success','Invitation sent','${c.name} invited to a conversational AI interview'); closeDrawer();">Invite to AI interview</button>
-        <button class="btn btn-secondary" onclick="navigateTo('email'); openComposeModal(); document.getElementById('cmpTo').value='${c.name.toLowerCase().replace(/[^a-z]/g,'.')}@mail.com'; closeDrawer();">✉️ Email</button>
+        <button class="btn btn-secondary" onclick="navigateTo('email'); openComposeModal(); document.getElementById('cmpTo').value='${c.email || c.name.toLowerCase().replace(/[^a-z]/g,'.') + '@mail.com'}'; closeDrawer();">✉️ Email</button>
       </div>
       <div class="form-label" style="margin-bottom:10px;">Profile</div>
       <div style="font-size:13.5px; color:var(--slate-600); line-height:1.8;">
+        ${c.email ? '<strong style="color:var(--ink);">Email:</strong> ' + c.email + '<br>' : ''}
+        ${c.phone ? '<strong style="color:var(--ink);">Phone:</strong> <a href="tel:' + c.phone + '" style="color:var(--blue-500);">' + c.phone + '</a><br>' : ''}
         <strong style="color:var(--ink);">Experience:</strong> ${c.years} years<br>
         <strong style="color:var(--ink);">Specialisms:</strong> ${c.tags.join(', ')}<br>
         <strong style="color:var(--ink);">Availability:</strong> ${c.notice.replace('⚡ ','')}<br>
@@ -3906,9 +3963,11 @@
   function createCandidate() {
     const name = document.getElementById('ncName').value.trim();
     if (!name) { showToast('info','Missing name','Enter the candidate\'s full name'); return; }
+    const email = document.getElementById('ncEmail').value.trim();
+    const phone = document.getElementById('ncPhone').value.trim();
     const grads = ['#3B82F6,#1E40AF','#8B5CF6,#6D28D9','#10B981,#047857','#F59E0B,#D97706','#06B6D4,#0E7490'];
-    candidateData.unshift({
-      name,
+    const c = {
+      name, email, phone,
       role: document.getElementById('ncRole').value.trim() || 'Care Assistant',
       years: parseInt(document.getElementById('ncYears').value) || 1,
       tags: (document.getElementById('ncSkills').value.trim() || 'New candidate').split(',').map(t=>t.trim()).slice(0,3),
@@ -3916,11 +3975,29 @@
       notice: '⚡ Immediate', score: 70 + Math.floor(Math.random()*15),
       grad: grads[Math.floor(Math.random()*grads.length)],
       top:false, compliant:false, available:true, interviewed:false
-    });
+    };
+    candidateData.unshift(c);
     closeCandidateModal();
-    ['ncName','ncRole','ncYears','ncSkills','ncCity'].forEach(id => document.getElementById(id).value = '');
+    ['ncName','ncRole','ncYears','ncSkills','ncCity','ncEmail','ncPhone'].forEach(id => document.getElementById(id).value = '');
     renderCandidates();
-    showToast('success','Candidate added', name + ' is in the pipeline — AI screening and compliance checks have started');
+
+    // Persist to the shared applications table so it survives logins & appears for the whole team
+    if (sb && sbSession) {
+      const parts = name.split(' ');
+      sb.from('applications').insert([{
+        first_name: parts[0],
+        last_name: parts.slice(1).join(' ') || '-',
+        email: email || 'not-provided@bluenestcare.co.uk',
+        phone: phone || null,
+        status: 'added_by_staff'
+      }]).select().single().then(({ data, error }) => {
+        if (error) { console.warn('Candidate save failed:', error); showToast('info','Saved locally only','Could not write to the database — check your connection'); return; }
+        c.cloudId = data.id;
+        showToast('success','Candidate added', name + ' saved to the shared database — visible to the whole team');
+      });
+    } else {
+      showToast('success','Candidate added', name + ' is in the pipeline — AI screening and compliance checks have started');
+    }
   }
 
   // ====== SIDEBAR PANELS (notifications / calendar / help) ======
@@ -4103,7 +4180,7 @@
     document.getElementById('userAvatar').textContent = state.initials;
     document.getElementById('greetName').textContent = state.firstName;
     showToast('success', 'Welcome, ' + state.firstName, 'You\u2019re logged in to BlueNest AI');
-    if (sb && sbSession) syncVacanciesFromCloud();
+    if (sb && sbSession) { syncVacanciesFromCloud(); syncCandidatesFromCloud(); }
   }
   function logout() {
     if (sb && sbSession) { sb.auth.signOut().catch(()=>{}); sbSession = null; }
