@@ -1703,6 +1703,24 @@
   .auth-tab.active { background: var(--white); color: var(--ink); box-shadow: var(--shadow-sm); }
   .auth-error { display:none; background: var(--red-100); color: var(--red-500); font-size: 13px; font-weight: 600; padding: 10px 14px; border-radius: 10px; margin-bottom: 14px; }
 
+
+  /* ====== NIGHT MODE READABILITY FIXES ====== */
+  [data-theme="dark"] { color-scheme: dark; }
+  [data-theme="dark"] input::placeholder,
+  [data-theme="dark"] textarea::placeholder { color: var(--slate-400); opacity: 1; }
+  [data-theme="dark"] select, [data-theme="dark"] select option { background: var(--white); color: var(--ink); }
+  [data-theme="dark"] .metric-value, [data-theme="dark"] .stat-value,
+  [data-theme="dark"] .page-title, [data-theme="dark"] .card-title,
+  [data-theme="dark"] .modal-title, [data-theme="dark"] .drawer-header .modal-title { color: var(--ink); }
+  [data-theme="dark"] .email-view-body, [data-theme="dark"] .transcript p { color: var(--slate-600); }
+  [data-theme="dark"] input:-webkit-autofill,
+  [data-theme="dark"] input:-webkit-autofill:hover,
+  [data-theme="dark"] input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--ink);
+    -webkit-box-shadow: 0 0 0px 1000px var(--slate-100) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
 </style>
 </head>
 <body class="landing-active">
@@ -1758,7 +1776,7 @@
   </div>
 
   <div class="land-footer">
-    © 2026 BlueNest Care Recruitment Ltd ·UK · Access restricted to authorised team members
+    © 2026 BlueNest Care Recruitment Ltd · UK · Access restricted to authorised team members
   </div>
 </div>
 
@@ -2350,6 +2368,7 @@
               <span style="font-size:13px; font-weight:600; color:var(--ink);">AI Auto-Reply</span>
               <div class="switch on" id="autoReplySwitch" onclick="toggleAutoReply()" role="switch" aria-checked="true" title="When on, BlueNest AI replies to routine emails without waiting for you"></div>
             </div>
+            <button class="btn btn-secondary" onclick="runEmailHealthCheck()">🩺 Health check</button>
             <button class="btn btn-secondary" onclick="simulateIncoming()">📥 Test incoming email</button>
             <button class="btn btn-primary" onclick="openComposeModal()">✍️ Compose</button>
           </div>
@@ -2792,6 +2811,10 @@
       <div class="form-group">
         <label class="form-label">Job title</label>
         <input class="form-input" id="nvTitle" placeholder="e.g. Senior Care Assistant" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Job description <span style="text-transform:none; font-weight:500;">(shown to candidates on the website)</span></label>
+        <textarea class="form-textarea" id="nvDesc" rows="4" placeholder="What the role involves, requirements, shifts available… Leave blank and AI will write one from the details below."></textarea>
       </div>
       <div class="form-row">
         <div class="form-group">
@@ -3285,6 +3308,7 @@
       pay, payNum: parseFloat((String(pay).match(/[\d.]+/) || [12.5])[0]),
       type: /part[- ]?time/.test(text) ? 'Part-time' : /bank|on[- ]?call/.test(text) ? 'Bank' : 'Full-time',
       shift: /night/.test(text) && /day/.test(text) ? 'Mixed shifts' : /night/.test(text) ? 'Night shifts' : 'Day shifts',
+      desc: row.desc_text || '',
       detail: row.cat || (row.desc_text ? row.desc_text.split('.')[0].substring(0, 60) : 'Live role'),
       status: row.is_live === false ? 'paused' : 'open',
       applicants: 0, shortlisted: 0, interviews: 0
@@ -3327,7 +3351,7 @@
         title: v.title,
         rate: v.pay,
         loc: v.city,
-        desc_text: v.title + ' — ' + v.type + ', ' + v.shift.toLowerCase() + '. ' + v.detail + '. Requirements: Care Certificate preferred. Apply today and our team will be in touch within two working days.',
+        desc_text: v.desc && v.desc.length > 10 ? v.desc : (v.title + ' — ' + v.type + ', ' + v.shift.toLowerCase() + '. ' + v.detail + '. Requirements: Care Certificate preferred. Apply today and our team will be in touch within two working days.'),
         cat: guessCategory(v.title),
         tags: [v.city, v.type],
         is_live: true
@@ -3435,12 +3459,13 @@
       pay, payNum,
       type: document.getElementById('nvType').value,
       shift: document.getElementById('nvShift').value,
-      detail: 'New role',
+      desc: document.getElementById('nvDesc').value.trim(),
+      detail: (document.getElementById('nvDesc').value.trim().split(/[.\n]/)[0] || 'New role').substring(0, 60),
       status: document.getElementById('nvPriority').value,
       applicants: 0, shortlisted: 0, interviews: 0
     });
     closeVacancyModal();
-    ['nvTitle','nvClient','nvLocation','nvPay'].forEach(id => document.getElementById(id).value = '');
+    ['nvTitle','nvClient','nvLocation','nvPay','nvDesc'].forEach(id => document.getElementById(id).value = '');
     renderVacancies();
     const v = vacancies[0];
     if (sb && sbSession) {
@@ -3476,6 +3501,7 @@
       <button class="btn btn-secondary" style="width:100%; margin-bottom:20px;" onclick="toggleVacancyLive('${v.id}')">
         ${v.cloudId ? (v.status === 'paused' ? '🌐 Publish back to website' : '🚫 Unpublish from website') : '🌐 Publish to website job board'}
       </button>
+      ${v.desc ? '<div class="form-label" style="margin-bottom:8px;">Job description (as shown on the website)</div><div style="font-size:13px; color:var(--slate-600); line-height:1.7; background:var(--slate-50); border:1px solid var(--slate-100); border-radius:12px; padding:14px 16px; margin-bottom:20px; white-space:pre-line;">' + v.desc + '</div>' : ''}
       <div class="form-label" style="margin-bottom:10px;">AI-matched candidates</div>
       ${matches}
       <div class="form-label" style="margin:22px 0 10px;">Pipeline</div>
@@ -3604,19 +3630,79 @@
                 bodyText.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</div>'
         })
       });
-      const ok = res.ok;
       // Log to the database regardless, so there is an audit trail
       sb.from('emails').insert([{ folder:'sent', from_addr: state.fullName, to_addr: to, subject, body: bodyText, sent_by_ai: !!byAI }]).then(()=>{});
-      if (!ok) {
+      if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        console.error('send-email failed:', err);
-        showToast('info', 'Email logged, delivery pending', 'The send-email function returned an error — check the setup guide');
+        console.error('send-email failed:', res.status, err);
+        return { live: false, status: res.status, error: err };
       }
-      return { live: ok };
+      return { live: true, status: res.status };
     } catch (e) {
       console.warn('Live delivery unavailable:', e);
-      return { live: false };
+      return { live: false, status: 0, error: String(e) };
     }
+  }
+
+  function describeSendFailure(r) {
+    if (!sbSession) return 'You are in offline demo mode — log in with your approved account for real delivery';
+    if (r.status === 404) return 'The send-email function is not deployed yet (Step 3 of the setup guide)';
+    if (r.status === 401) return 'The function rejected the login token — redeploy send-email, or re-log-in';
+    if (r.status === 403) return 'Blocked by the function\u2019s security check';
+    if (r.status === 502) return 'Resend rejected it — usually the domain isn\u2019t verified or RESEND_API_KEY isn\u2019t set';
+    if (r.status === 0) return 'Could not reach Supabase — network or CORS issue';
+    return 'Unexpected error (status ' + r.status + ')';
+  }
+
+
+  // ====== EMAIL HEALTH CHECK ======
+  async function runEmailHealthCheck() {
+    const lines = [];
+    const add = (ok, name, note) => lines.push(
+      '<div style="display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--slate-100);">' +
+      '<div style="font-size:16px;">' + (ok === true ? '✅' : ok === false ? '❌' : '⚠️') + '</div>' +
+      '<div><div style="font-size:13.5px; font-weight:700; color:var(--ink);">' + name + '</div>' +
+      '<div style="font-size:12.5px; color:var(--slate-500); line-height:1.55;">' + note + '</div></div></div>');
+
+    document.getElementById('drawerTitle').textContent = '🩺 Email health check';
+    document.getElementById('drawerSub').textContent = 'Running…';
+    document.getElementById('drawerBody').innerHTML = '<div class="empty-state">Checking each link in the chain…</div>';
+    document.getElementById('drawerOverlay').classList.add('active');
+    document.getElementById('vacancyDrawer').classList.add('active');
+
+    // 1. Supabase library
+    add(!!sb, 'Supabase connection', sb ? 'Library loaded and client created' : 'supabase-js failed to load — check your internet or CDN access');
+
+    // 2. Login mode
+    if (sbSession) add(true, 'Real login', 'Logged in with a live Supabase session — staff sending is allowed');
+    else add(false, 'Real login', 'You are in OFFLINE DEMO MODE. Nothing can really send. Log out, then log in with the account you created and approved in Supabase (not the demo credentials).');
+
+    // 3. Function deployed?
+    let deployed = null;
+    try {
+      const r = await fetch(SUPABASE_URL + '/functions/v1/send-email', { method: 'OPTIONS' });
+      deployed = r.ok || r.status === 405;
+      add(deployed, 'send-email function', deployed ? 'Deployed and reachable' : 'Responded with status ' + r.status + ' — likely not deployed. Run: supabase functions deploy send-email');
+    } catch (e) {
+      deployed = false;
+      add(false, 'send-email function', 'Unreachable (' + e + ') — not deployed, or network/CORS blocked');
+    }
+
+    // 4. Real test send (only meaningful when logged in + deployed)
+    if (sbSession && deployed) {
+      const r = await deliverEmail('hello@bluenestcare.co.uk', 'BlueNest health check ' + timeNow(),
+        'This is an automatic test from the Email Studio health check. If you are reading this in the hello@ inbox, live delivery works end to end.', false);
+      if (r.live) add(true, 'Live test email', 'Sent successfully — check hello@bluenestcare.co.uk (and spam) to confirm arrival');
+      else add(false, 'Live test email', describeSendFailure(r) + (r.error ? '<br><code style="font-size:11px;">' + JSON.stringify(r.error).substring(0,220) + '</code>' : ''));
+    } else {
+      add(null, 'Live test email', 'Skipped — fix the checks above first');
+    }
+
+    add(null, 'Incoming email', 'Reminder: the Inbox here is a simulation. Real INCOMING mail (candidates writing to you) is a future phase — but OUTGOING mail and the applicant auto-confirmation webhook are real once the checks above pass.');
+
+    document.getElementById('drawerSub').textContent = 'Every link in the chain, tested just now';
+    document.getElementById('drawerBody').innerHTML = lines.join('') +
+      '<div style="margin-top:16px; font-size:12.5px; color:var(--slate-500); line-height:1.6;">Fix anything marked ❌ then run the check again. The SETUP-GUIDE covers each step.</div>';
   }
 
   function switchFolder(f) {
@@ -3640,7 +3726,11 @@
       return;
     }
     list.innerHTML = msgs.map(e => {
-      const tag = currentFolder === 'sent' ? '<span class="email-tag tag-replied">📤 Sent</span>'
+      const tag = currentFolder === 'sent'
+        ? (e.delivery === 'live' ? '<span class="email-tag tag-replied">📤 Delivered</span>'
+           : e.delivery === 'failed' ? '<span class="email-tag" style="background:var(--red-100);color:var(--red-500);">⚠️ Not delivered</span>'
+           : e.delivery === 'pending' ? '<span class="email-tag tag-pending">⏳ Sending…</span>'
+           : '<span class="email-tag tag-pending">💻 Demo only — not delivered</span>')
         : currentFolder === 'archived' ? '<span class="email-tag" style="background:var(--slate-100); color:var(--slate-500);">🗂 Archived</span>'
         : e.status === 'replied' ? '<span class="email-tag tag-replied">✓ Replied by AI</span>'
         : e.status === 'approved' ? '<span class="email-tag tag-replied">✓ Reply sent</span>'
@@ -3719,11 +3809,14 @@
       const text = await aiReply(e);
       e.status = 'replied';
       e.thread.push({ by:'ai', time: timeNow(), text });
-      mail.sent.unshift({ id: ++mailIdSeq, from: e.from, addr: e.addr, subject: 'RE: ' + e.subject.replace(/^RE:\s*/i,''), time: timeNow(), status:'replied', body: text, thread: [] });
-      const delivered = await deliverEmail(e.addr, 'RE: ' + e.subject.replace(/^RE:\s*/i,''), text, true);
+      const sentItem = { id: ++mailIdSeq, from: e.from, addr: e.addr, subject: 'RE: ' + e.subject.replace(/^RE:\s*/i,''), time: timeNow(), status:'replied', body: text, thread: [], delivery: 'pending' };
+      mail.sent.unshift(sentItem);
+      const delivered = await deliverEmail(e.addr, sentItem.subject, text, true);
+      sentItem.delivery = delivered.live ? 'live' : (sbSession ? 'failed' : 'demo');
       renderEmailList();
       if (currentEmail === e.id) openEmail(e.id);
-      showToast('success', 'AI replied to ' + e.from, '"' + e.subject + '"' + (delivered.live ? ' — delivered via email' : ' answered automatically'));
+      showToast(delivered.live ? 'success' : 'info', 'AI replied to ' + e.from,
+        delivered.live ? '"' + e.subject + '" — genuinely delivered by email' : describeSendFailure(delivered));
     }, 2600);
   }
 
@@ -3747,9 +3840,12 @@
     const text = (box ? box.value : e.draft) || composeReply(e);
     e.status = 'approved';
     e.thread.push({ by:'human', time: timeNow(), text });
-    mail.sent.unshift({ id: ++mailIdSeq, from: e.from, addr: e.addr, subject: 'RE: ' + e.subject.replace(/^RE:\s*/i,''), time: timeNow(), status:'replied', body: text, thread: [] });
-    deliverEmail(e.addr, 'RE: ' + e.subject.replace(/^RE:\s*/i,''), text, false).then(d => {
-      showToast('success', 'Reply sent', d.live ? 'Delivered to ' + e.addr + ' by email' : 'Your approved reply to ' + e.from + ' is on its way');
+    const sentItem = { id: ++mailIdSeq, from: e.from, addr: e.addr, subject: 'RE: ' + e.subject.replace(/^RE:\s*/i,''), time: timeNow(), status:'replied', body: text, thread: [], delivery: 'pending' };
+    mail.sent.unshift(sentItem);
+    deliverEmail(e.addr, sentItem.subject, text, false).then(d => {
+      sentItem.delivery = d.live ? 'live' : (sbSession ? 'failed' : 'demo');
+      renderEmailList();
+      showToast(d.live ? 'success' : 'info', 'Reply ' + (d.live ? 'delivered' : 'not delivered'), d.live ? 'Delivered to ' + e.addr + ' by email' : describeSendFailure(d));
     });
     renderEmailList();
     openEmail(id);
@@ -3826,12 +3922,15 @@
     const body = document.getElementById('cmpBody').value.trim();
     if (!to) { showToast('info', 'Add a recipient', 'Enter an email address before sending'); return; }
     if (!body) { showToast('info', 'Empty message', 'Write something, or use "Let AI write it"'); return; }
-    mail.sent.unshift({ id: ++mailIdSeq, from: to, addr: to, subject: subj, time: timeNow(), status:'replied', body, thread: [] });
+    const sentItem = { id: ++mailIdSeq, from: to, addr: to, subject: subj, time: timeNow(), status:'replied', body, thread: [], delivery: 'pending' };
+    mail.sent.unshift(sentItem);
     closeComposeModal();
     ['cmpTo','cmpSubject','cmpBody'].forEach(id => document.getElementById(id).value = '');
     if (currentFolder === 'sent') renderEmailList();
     deliverEmail(to, subj, body, false).then(d => {
-      showToast('success', 'Email sent', d.live ? 'Delivered to ' + to + ' by email — saved in Sent' : 'Delivered to ' + to + ' — saved in Sent');
+      sentItem.delivery = d.live ? 'live' : (sbSession ? 'failed' : 'demo');
+      renderEmailList();
+      showToast(d.live ? 'success' : 'info', d.live ? 'Email delivered' : 'Email NOT delivered', d.live ? 'Delivered to ' + to + ' by email — saved in Sent' : describeSendFailure(d));
     });
   }
 
@@ -3859,6 +3958,8 @@
       cloudId: row.id,
       email: row.email || '',
       phone: row.phone || '',
+      documents: Array.isArray(row.documents) ? row.documents : [],
+      createdAt: row.created_at || null,
       role: 'Website applicant' + (when ? ' · applied ' + when : ''),
       years: 0,
       tags: ['📥 New application', docs ? docs + ' document' + (docs>1?'s':'') + ' uploaded' : 'No documents yet', (row.status || 'new')],
@@ -3948,6 +4049,12 @@
         <strong style="color:var(--ink);">Compliance:</strong> ${c.compliant ? '✓ Fully compliant' : '⚠️ Documents need attention'}<br>
         <strong style="color:var(--ink);">AI interview:</strong> ${c.interviewed ? '✓ Completed — recommended to progress' : 'Not yet completed'}
       </div>
+      <div class="form-label" style="margin:22px 0 10px;">Documents</div>
+      ${(c.documents && c.documents.length)
+        ? c.documents.map(doc => '<a href="' + doc.file_url + '" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:10px; padding:11px 14px; background:var(--slate-50); border:1px solid var(--slate-100); border-radius:10px; margin-bottom:8px; font-size:13px; font-weight:600; color:var(--blue-500); text-decoration:none;">📄 ' + (doc.document_type || 'Document') + ' <span style="margin-left:auto; font-size:11px; color:var(--slate-400); font-weight:500;">Open ↗</span></a>').join('')
+        : c.email
+          ? '<div style="font-size:13px; color:var(--slate-500); margin-bottom:8px;">No documents uploaded yet.</div><button class="btn btn-secondary" style="font-size:12px;" onclick="requestDocuments(\'' + c.email + '\', \'' + c.name.replace(/'/g,'') + '\')">📨 Request documents by email</button>'
+          : '<div style="font-size:13px; color:var(--slate-500);">No documents on file.</div>'}
       <div class="form-label" style="margin:22px 0 10px;">Best matched vacancies</div>
       ${vacancies.slice(0,3).map(v => `<div class="match-row"><div><div style="font-size:13.5px; font-weight:600; color:var(--ink);">${v.title}</div><div style="font-size:12px; color:var(--slate-500);">${v.client} · ${v.city} · ${v.pay}</div></div><div class="match-score">${Math.max(70, c.score - Math.floor(Math.random()*8))}%</div></div>`).join('')}`;
     document.getElementById('drawerOverlay').classList.add('active');
@@ -3998,6 +4105,130 @@
     } else {
       showToast('success','Candidate added', name + ' is in the pipeline — AI screening and compliance checks have started');
     }
+  }
+
+
+  // ====== DOCUMENT REQUEST (real email) ======
+  function requestDocuments(email, name) {
+    const first = name.split(' ')[0];
+    const body = 'Dear ' + first + ',\n\nThank you for your application to ' + state.agency.replace(' Ltd','') + '.\n\nTo move to the next stage we need copies of your documents — typically your ID (passport or driving licence), proof of address, right-to-work evidence, and any care certificates or training records you hold.\n\nYou can reply to this email with the documents attached, or upload them through the application page on our website.\n\nOnce received, we will process your DBS check (free of charge) and book your welcome call.' + signature();
+    deliverEmail(email, 'Documents needed to progress your application — BlueNest Care', body, true).then(d => {
+      showToast(d.live ? 'success' : 'info', d.live ? 'Request sent to ' + first : 'Request not delivered', d.live ? 'A professional document request is on its way to ' + email : describeSendFailure(d));
+    });
+    closeDrawer();
+  }
+
+  // ====== REAL COMPLIANCE PAGE (from live applications) ======
+  function renderCompliance() {
+    if (!sbSession) return; // demo mode keeps the sample table
+    const page = document.getElementById('page-compliance');
+    const withDocs = candidateData.filter(c => c.documents && c.documents.length);
+    const missing = candidateData.filter(c => c.email && (!c.documents || !c.documents.length));
+    const rate = candidateData.length ? Math.round(withDocs.length / candidateData.length * 100) : 0;
+    const badge = document.querySelector('[data-page="compliance"] .nav-badge');
+    if (badge) { badge.textContent = missing.length; badge.style.display = missing.length ? '' : 'none'; }
+
+    const rows = candidateData.map(c => {
+      const has = c.documents && c.documents.length;
+      const docCell = has
+        ? c.documents.map(d => '<a href="' + d.file_url + '" target="_blank" rel="noopener" style="color:var(--blue-500); text-decoration:none;">📄 ' + (d.document_type || 'Document') + '</a>').join('<br>')
+        : 'No documents on file';
+      const pill = has ? '<span class="status-pill status-open">● Received</span>' : '<span class="status-pill status-urgent">● Missing</span>';
+      const action = has
+        ? '<button class="action-btn" onclick="viewCandidate(\'' + c.name.replace(/'/g, "\\'") + '\')">Review</button>'
+        : c.email
+          ? '<button class="action-btn" onclick="requestDocuments(\'' + c.email + '\', \'' + c.name.replace(/'/g,'') + '\'); this.textContent=\'✓ Requested\'; this.disabled=true; this.style.opacity=0.6;">Request Upload</button>'
+          : '<span style="font-size:12px; color:var(--slate-400);">No email</span>';
+      return '<div class="compliance-row"><div><strong>' + c.name + '</strong><div style="font-size:12px; color:var(--slate-500);">' + c.role + '</div></div>' +
+             '<div style="font-size:13px; line-height:1.7;">' + docCell + '</div>' +
+             '<div style="font-size:13px; color:' + (has ? 'var(--green-500)' : 'var(--red-500)') + '; font-weight:600;">' + (has ? c.documents.length + ' uploaded' : 'Awaiting upload') + '</div>' +
+             '<div>' + pill + '</div><div>' + action + '</div></div>';
+    }).join('');
+
+    page.innerHTML = `
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Compliance</h1>
+          <p class="page-subtitle">Live document tracking from real website applications · GDPR compliant</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-primary" onclick="autoRemindAllReal()">🤖 Request All Missing (${missing.length})</button>
+        </div>
+      </div>
+      <div class="metrics-grid" style="margin-bottom:24px;">
+        <div class="metric-card"><div class="metric-header"><span class="metric-label">Documents received</span><div class="metric-icon" style="background:var(--green-100); color:var(--green-500);">✅</div></div><div class="metric-value">${withDocs.length}</div><div class="metric-change" style="color:var(--slate-500);">of ${candidateData.length} applicants</div></div>
+        <div class="metric-card"><div class="metric-header"><span class="metric-label">Awaiting documents</span><div class="metric-icon" style="background:var(--red-100); color:var(--red-500);">📭</div></div><div class="metric-value">${missing.length}</div><div class="metric-change" style="color:var(--slate-500);">one-click request below</div></div>
+        <div class="metric-card"><div class="metric-header"><span class="metric-label">Completion rate</span><div class="metric-icon" style="background:var(--blue-100); color:var(--blue-600);">📊</div></div><div class="metric-value">${rate}%</div><div class="metric-change" style="color:var(--slate-500);">across live applications</div></div>
+        <div class="metric-card"><div class="metric-header"><span class="metric-label">DBS checks</span><div class="metric-icon" style="background:var(--amber-100); color:var(--amber-500);">🛡️</div></div><div class="metric-value">—</div><div class="metric-change" style="color:var(--slate-500);">ClearCheck sync: next phase</div></div>
+      </div>
+      <div class="card"><div class="card-header"><div class="card-title">Applicant documents</div></div>
+        <div class="card-body" style="padding:0;">
+          <div class="compliance-row header"><div>Candidate</div><div>Documents</div><div>Status</div><div></div><div>Action</div></div>
+          ${rows || '<div class="empty-state">No applications yet</div>'}
+        </div>
+      </div>`;
+  }
+
+  function autoRemindAllReal() {
+    const missing = candidateData.filter(c => c.email && (!c.documents || !c.documents.length));
+    if (!missing.length) { showToast('info','Nothing to request','Every applicant has documents on file'); return; }
+    missing.forEach((c, i) => setTimeout(() => requestDocuments(c.email, c.name), i * 700));
+    showToast('success', 'Requesting documents', 'Sending professional requests to ' + missing.length + ' applicant' + (missing.length===1?'':'s') + '…');
+  }
+
+  // ====== REAL ANALYTICS PAGE ======
+  function renderAnalytics(rangeDays) {
+    if (!sbSession) return; // demo mode keeps the sample analytics
+    rangeDays = rangeDays || 14;
+    const page = document.getElementById('page-analytics');
+    const now = new Date();
+    const days = [];
+    for (let i = rangeDays - 1; i >= 0; i--) {
+      const d = new Date(now); d.setDate(now.getDate() - i);
+      days.push({ key: d.toISOString().slice(0,10), label: d.toLocaleDateString('en-GB',{day:'numeric',month:'short'}), count: 0 });
+    }
+    candidateData.forEach(c => {
+      if (!c.createdAt) return;
+      const k = String(c.createdAt).slice(0,10);
+      const hit = days.find(x => x.key === k);
+      if (hit) hit.count++;
+    });
+    const total = candidateData.length;
+    const last7 = candidateData.filter(c => c.createdAt && (now - new Date(c.createdAt)) < 7*864e5).length;
+    const docsRate = total ? Math.round(candidateData.filter(c=>c.documents&&c.documents.length).length/total*100) : 0;
+    const liveVacs = vacancies.filter(v => v.status !== 'paused').length;
+    const maxC = Math.max(1, ...days.map(d=>d.count));
+    const bars = days.map(d => '<div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; min-width:0;">' +
+      '<div style="font-size:11px; font-weight:700; color:var(--ink);">' + (d.count||'') + '</div>' +
+      '<div style="width:70%; border-radius:6px 6px 2px 2px; background:linear-gradient(180deg,var(--blue-400),var(--blue-600)); height:' + Math.max(4, Math.round(d.count/maxC*120)) + 'px;"></div>' +
+      '<div style="font-size:9.5px; color:var(--slate-400); white-space:nowrap; overflow:hidden;">' + d.label + '</div></div>').join('');
+    const recent = candidateData.slice(0,6).map(c => '<div class="activity-item"><div class="activity-dot" style="background:var(--blue-100);">📥</div><div class="activity-content"><div class="activity-text"><strong>' + c.name + '</strong> applied via the website</div><div class="activity-time">' + (c.createdAt ? new Date(c.createdAt).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : '') + ' · ' + ((c.documents&&c.documents.length) ? c.documents.length + ' docs' : 'no docs yet') + '</div></div></div>').join('');
+
+    page.innerHTML = `
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Analytics</h1>
+          <p class="page-subtitle">Live numbers from your real applications and vacancies</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <select class="form-select" style="width:auto; padding:8px 14px; font-size:13px;" onchange="renderAnalytics(parseInt(this.value))">
+            <option value="14">Last 14 days</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option>
+          </select>
+          <button class="btn btn-primary" onclick="exportReport()">📥 Export Report</button>
+        </div>
+      </div>
+      <div class="metrics-grid" style="margin-bottom:24px;">
+        <div class="metric-card"><div class="metric-header"><span class="metric-label">Total applications</span><div class="metric-icon" style="background:var(--blue-100); color:var(--blue-600);">📥</div></div><div class="metric-value">${total}</div><div class="metric-change" style="color:var(--slate-500);">all time, from the website</div></div>
+        <div class="metric-card"><div class="metric-header"><span class="metric-label">Last 7 days</span><div class="metric-icon" style="background:var(--green-100); color:var(--green-500);">📈</div></div><div class="metric-value">${last7}</div><div class="metric-change" style="color:var(--slate-500);">new applicants this week</div></div>
+        <div class="metric-card"><div class="metric-header"><span class="metric-label">Live vacancies</span><div class="metric-icon" style="background:var(--purple-100); color:var(--purple-500);">💼</div></div><div class="metric-value">${liveVacs}</div><div class="metric-change" style="color:var(--slate-500);">visible on the job board</div></div>
+        <div class="metric-card"><div class="metric-header"><span class="metric-label">Documents rate</span><div class="metric-icon" style="background:var(--amber-100); color:var(--amber-500);">📄</div></div><div class="metric-value">${docsRate}%</div><div class="metric-change" style="color:var(--slate-500);">of applicants uploaded docs</div></div>
+      </div>
+      <div class="card" style="margin-bottom:22px;"><div class="card-header"><div class="card-title">Applications per day</div></div>
+        <div class="card-body"><div style="display:flex; align-items:flex-end; gap:4px; height:170px;">${bars}</div></div>
+      </div>
+      <div class="card"><div class="card-header"><div class="card-title">Recent applications</div></div>
+        <div class="card-body">${recent || '<div class="empty-state">No applications yet</div>'}</div>
+      </div>`;
   }
 
   // ====== SIDEBAR PANELS (notifications / calendar / help) ======
@@ -4180,7 +4411,7 @@
     document.getElementById('userAvatar').textContent = state.initials;
     document.getElementById('greetName').textContent = state.firstName;
     showToast('success', 'Welcome, ' + state.firstName, 'You\u2019re logged in to BlueNest AI');
-    if (sb && sbSession) { syncVacanciesFromCloud(); syncCandidatesFromCloud(); }
+    if (sb && sbSession) { Promise.all([syncVacanciesFromCloud(), syncCandidatesFromCloud()]).then(() => { renderCompliance(); renderAnalytics(); }); }
   }
   function logout() {
     if (sb && sbSession) { sb.auth.signOut().catch(()=>{}); sbSession = null; }
