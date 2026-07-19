@@ -785,7 +785,7 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
           <div style="text-align:center;padding:8px">
             <div style="width:64px;height:64px;border-radius:50%;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">🎯</div>
             <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px">Sector experience first</h3>
-            <p style="font-size:14px;color:var(--dgray);line-height:1.7">Our founders worked on the frontline. We don’t theorise about the care sector; we’ve lived it. That direct, real-world insight shapes every decision we make, every healthcare professional we register, and every shift we cover</p>
+            <p style="font-size:14px;color:var(--dgray);line-height:1.7">Our founders worked on the frontline. We don’t theorise about the care sector; we’ve lived it. That direct, real world insight shapes every decision we make, every healthcare professional we register, and every shift we cover</p>
           </div>
           <div style="text-align:center;padding:8px">
             <div style="width:64px;height:64px;border-radius:50%;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px">📱</div>
@@ -807,12 +807,12 @@ footer{background:#061630;color:rgba(255,255,255,0.7);padding:56px 24px 28px}
         <div class="card" style="text-align:center;padding:28px 20px">
           <div style="font-size:32px;margin-bottom:14px">🤝</div>
           <h3 style="margin-bottom:8px">Trusted</h3>
-          <p style="font-size:13px">Every worker is verified. Every rate is transparent. Every promise is kept no exceptions.</p>
+          <p style="font-size:13px">Every worker is verified. Every rate is transparent. Every promise is kept, no exceptions.</p>
         </div>
         <div class="card" style="text-align:center;padding:28px 20px">
           <div style="font-size:32px;margin-bottom:14px">⚡</div>
           <h3 style="margin-bottom:8px">Responsive</h3>
-          <p style="font-size:13px">Same-day cover is our standard service, not a premium add-on. Speed saves lives in care.</p>
+          <p style="font-size:13px">Same day cover is our standard service, not a premium add-on. Speed saves lives in care.</p>
         </div>
         <div class="card" style="text-align:center;padding:28px 20px">
           <div style="font-size:32px;margin-bottom:14px">💷</div>
@@ -1135,10 +1135,12 @@ const staticJobs = [
   
 
 // ===== STAFF PORTAL — HIDDEN ACCESS =====
-// The portal button is invisible to the public. Three quiet ways in for the team:
-//   1. Keyboard: press Ctrl + Shift + B anywhere on the site (desktop)
-//   2. Mobile:   tap the footer copyright line 5 times quickly
-//   3. Bookmark: visit bluenestcare.co.uk/#staff — the nav button appears for that visit
+// The portal button is invisible to the public. Four quiet ways in for the team:
+//   1. Keyboard: press Ctrl + Alt + B anywhere on the site (desktop)
+//      (Ctrl+Shift+B is taken by the browser's bookmarks bar, so we avoid it)
+//   2. Type the word "nest" anywhere on the page (not inside a form field)
+//   3. Mobile:   tap the footer copyright line 5 times quickly
+//   4. Bookmark: visit bluenestcare.co.uk/#staff — the nav button appears for that visit
 // Note: this is discretion, not security. Real security is the portal login itself.
 const PORTAL_URL = 'bn-portal-x7k2.html';
 
@@ -1150,13 +1152,26 @@ function revealPortalButtons() {
 }
 function openPortal() { window.location.href = PORTAL_URL; }
 
-// 1. Keyboard shortcut (desktop)
+// 1. Keyboard shortcut (desktop) — Ctrl+Alt+B (not reserved by any major browser)
 document.addEventListener('keydown', function (e) {
-  if (e.ctrlKey && e.shiftKey && (e.key === 'B' || e.key === 'b')) {
+  if (e.ctrlKey && e.altKey && (e.key === 'B' || e.key === 'b' || e.code === 'KeyB')) {
     e.preventDefault();
     openPortal();
   }
 });
+
+// 2. Typed sequence: quietly type "nest" while viewing the page
+(function () {
+  let buf = '';
+  document.addEventListener('keydown', function (e) {
+    const t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (e.key && e.key.length === 1) {
+      buf = (buf + e.key.toLowerCase()).slice(-4);
+      if (buf === 'nest') { buf = ''; openPortal(); }
+    }
+  });
+})();
 
 // 2. Five quick taps on the footer copyright (mobile-friendly)
 (function () {
