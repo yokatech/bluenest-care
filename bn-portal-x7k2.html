@@ -1658,6 +1658,7 @@
   .copy-btn { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.12); color: white; border-radius: 8px; padding: 5px 12px; font-size: 11px; font-weight: 600; }
   .copy-btn:hover { background: rgba(255,255,255,0.22); }
 
+  .status-paused { background: var(--slate-100); color: var(--slate-500); }
   .folder-tab { flex:1; padding: 12px 8px; font-size: 12.5px; font-weight: 700; color: var(--slate-500); border-bottom: 2px solid transparent; }
   .folder-tab.active { color: var(--blue-500); border-bottom-color: var(--blue-500); background: var(--blue-50); }
   .folder-tab:hover { color: var(--ink); }
@@ -1729,9 +1730,7 @@
   <div class="land-hero">
     <div class="land-eyebrow">Internal platform · BlueNest Care Recruitment Ltd</div>
     <h1 class="land-h1">The AI engine behind <span class="grad">BlueNest Care</span></h1>
-    <p class="land-sub">One secure workspace where AI screens candidates, answers emails, runs conversational interviews, tracks compliance and matches people to shifts — while your team focuses on relationships.</p>
-    <div class="land-cta-row">
-    </div>
+    <p class="land-sub">One secure workspace where AI screens candidates, answers emails, runs conversational interviews, tracks compliance and matches people to shifts while your team focuses on other tasks.</p>
 
     <div class="land-shot">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
@@ -1759,7 +1758,7 @@
   </div>
 
   <div class="land-footer">
-    © 2026 BlueNest Care Recruitment Ltd · UK · Access restricted to authorised team members
+    © 2026 BlueNest Care Recruitment Ltd · Sheffield, UK · Access restricted to authorised team members
   </div>
 </div>
 
@@ -1788,7 +1787,7 @@
         <label class="form-label">Password</label>
         <input class="form-input" id="authPassword" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')submitAuth()" />
       </div>
-      <div style="font-size:12px; color:var(--slate-400); line-height:1.5;" id="authHint">Team access only. New signups need owner approval before first login.</div>
+      <div style="font-size:12px; color:var(--slate-400); line-height:1.5;" id="authHint">Team access only. New signups need owner approval before first login.<br>Offline demo: <strong>eric@bluenestcare.co.uk</strong> / <strong>bluenest2026</strong></div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-primary" style="width:100%;" id="authSubmitBtn" onclick="submitAuth()">Log in</button>
@@ -2352,7 +2351,7 @@
               <div class="switch on" id="autoReplySwitch" onclick="toggleAutoReply()" role="switch" aria-checked="true" title="When on, BlueNest AI replies to routine emails without waiting for you"></div>
             </div>
             <button class="btn btn-secondary" onclick="simulateIncoming()">📥 Test incoming email</button>
-            <button class="btn btn-primary" onclick="openComposeModal()">Compose</button>
+            <button class="btn btn-primary" onclick="openComposeModal()">✍️ Compose</button>
           </div>
         </div>
 
@@ -2376,7 +2375,7 @@
         <div class="page-header">
           <div>
             <h1 class="page-title">AI Interviews</h1>
-            <p class="page-subtitle">Warm, conversational pre-screening candidates say it feels like talking to a person</p>
+            <p class="page-subtitle">Warm, conversational pre-screening — candidates say it feels like talking to a person</p>
           </div>
           <div style="display:flex; gap:10px;">
             <button class="btn btn-secondary" onclick="regenerateQuestions()">🔄 New Question Set</button>
@@ -2390,7 +2389,7 @@
               <div class="card-title">Question Set — <span id="iqRole">Senior Care Assistant</span></div>
               <select class="form-select" style="width:auto; padding:6px 12px; font-size:12.5px;" id="iqRoleSelect" onchange="renderQuestions()">
                 <option>Senior Care Assistant</option>
-                <option>Healthcare Assistant</option>
+                <option>Registered Nurse (RGN)</option>
                 <option>Support Worker</option>
                 <option>Night Care Assistant</option>
               </select>
@@ -2414,7 +2413,7 @@
                 <p><span class="t-ai">Interviewer:</span> "In his own time rather than mine" — that's exactly the mindset our clients look for. Last thing before we talk practicalities: what would your current colleagues say it's like to work alongside you?</p>
               </div>
               <div style="margin-top:14px; font-size:12.5px; color:var(--slate-500); line-height:1.6;">
-                <strong style="color:var(--ink);">AI assessment:</strong> Empathetic, person-centred, calm under pressure. Notice-period two weeks. Recommended to progress. Interview conducted conversationally no scripted or robotic phrasing detected by candidate-experience check.
+                <strong style="color:var(--ink);">AI assessment:</strong> Empathetic, person-centred, calm under pressure. Notice-period two weeks. Recommended to progress. Interview conducted conversationally — no scripted or robotic phrasing detected by candidate-experience check.
               </div>
             </div>
           </div>
@@ -2426,7 +2425,7 @@
         <div class="page-header">
           <div>
             <h1 class="page-title">Preferences</h1>
-            <p class="page-subtitle">Personalise how BlueNest AI works for you changes apply instantly</p>
+            <p class="page-subtitle">Personalise how BlueNest AI works for you — changes apply instantly</p>
           </div>
         </div>
 
@@ -2438,7 +2437,7 @@
                 <div class="settings-row-label">Display name</div>
                 <div class="settings-row-desc">Used in greetings and email signatures</div>
               </div>
-              <input class="form-input" style="max-width:240px;" id="prefName" value="Eric Kalongo" onchange="applyProfile()" />
+              <input class="form-input" style="max-width:240px;" id="prefName" value="Eric Kayoka" onchange="applyProfile()" />
             </div>
             <div class="settings-row">
               <div style="flex:1;">
@@ -2936,13 +2935,13 @@
   // so this file also works safely inside restricted preview environments.
   const SUPABASE_URL = "https://elykftkkvpailczmpksu.supabase.co";
   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVseWtmdGtrdnBhaWxjem1wa3N1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA4NTg3OTAsImV4cCI6MjA5NjQzNDc5MH0.alDaZuyfMyUgYFBtu0xKB02pPHticyLKbtQp4Vld6OQ";
-  let sb = null;
+  var sb = null;
   try {
     if (window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY) {
       sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { auth: { persistSession: false } });
     }
   } catch (e) { console.warn('Supabase unavailable, running in demo mode:', e); }
-  let sbSession = null; // holds { access_token } after a real login
+  var sbSession = null; // holds { access_token } after a real login
 
   // ====== NAVIGATION ======
   function navigateTo(page) {
@@ -3258,7 +3257,103 @@
     ['Liam Foster', 87, '6 yrs · Night shift specialist · DBS valid']
   ];
 
-  const pillMap = { open:['status-open','Open'], urgent:['status-urgent','Urgent'], interview:['status-interview','Interviewing'] };
+  const pillMap = { open:['status-open','Open'], urgent:['status-urgent','Urgent'], interview:['status-interview','Interviewing'], paused:['status-paused','Off website'] };
+
+
+  // ====== VACANCY <-> WEBSITE SYNC (shared `jobs` table) ======
+  // The website job board and this tab now read/write the SAME Supabase table,
+  // so what you see here is what candidates see on bluenestcare.com.
+  function jobRowToVacancy(row) {
+    const text = ((row.desc_text || '') + ' ' + (row.cat || '') + ' ' + JSON.stringify(row.tags || [])).toLowerCase();
+    const pay = row.rate || '£12.50/hr';
+    return {
+      id: 'cloud-' + row.id,
+      cloudId: row.id,
+      title: row.title,
+      client: 'BlueNest Care',
+      city: row.loc || 'Sheffield',
+      pay, payNum: parseFloat((String(pay).match(/[\d.]+/) || [12.5])[0]),
+      type: /part[- ]?time/.test(text) ? 'Part-time' : /bank|on[- ]?call/.test(text) ? 'Bank' : 'Full-time',
+      shift: /night/.test(text) && /day/.test(text) ? 'Mixed shifts' : /night/.test(text) ? 'Night shifts' : 'Day shifts',
+      detail: row.cat || (row.desc_text ? row.desc_text.split('.')[0].substring(0, 60) : 'Live role'),
+      status: row.is_live === false ? 'paused' : 'open',
+      applicants: 0, shortlisted: 0, interviews: 0
+    };
+  }
+
+  async function syncVacanciesFromCloud() {
+    if (!sb || !sbSession) return;
+    try {
+      const { data: rows, error } = await sb.from('jobs').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      if (rows && rows.length) {
+        vacancies.length = 0;
+        rows.forEach(r => vacancies.push(jobRowToVacancy(r)));
+        renderVacancies();
+        showToast('success', 'Vacancies synced', rows.length + ' role' + (rows.length === 1 ? '' : 's') + ' loaded from your live website job board');
+      } else {
+        showToast('info', 'No live jobs found', 'The website jobs table is empty — vacancies you create here will publish to it');
+      }
+    } catch (e) {
+      console.warn('Vacancy sync failed, keeping local data:', e);
+    }
+  }
+
+  function guessCategory(title) {
+    const t = title.toLowerCase();
+    if (/healthcare assistant|hca/.test(t)) return 'HCA';
+    if (/senior/.test(t)) return 'Senior Carer';
+    if (/support worker/.test(t)) return 'Support Worker';
+    if (/team leader|deputy|manager/.test(t)) return 'Team Leader';
+    if (/nurse|rgn|specialist/.test(t)) return 'Specialist';
+    if (/bank|on[- ]?call/.test(t)) return 'Bank / On-Call';
+    return 'Care Assistant';
+  }
+
+  async function publishVacancyToWebsite(v) {
+    if (!sb || !sbSession) return false;
+    try {
+      const { data, error } = await sb.from('jobs').insert([{
+        title: v.title,
+        rate: v.pay,
+        loc: v.city,
+        desc_text: v.title + ' — ' + v.type + ', ' + v.shift.toLowerCase() + '. ' + v.detail + '. Requirements: Care Certificate preferred. Apply today and our team will be in touch within two working days.',
+        cat: guessCategory(v.title),
+        tags: [v.city, v.type],
+        is_live: true
+      }]).select().single();
+      if (error) throw error;
+      v.cloudId = data.id;
+      v.status = v.status === 'paused' ? 'open' : v.status;
+      return true;
+    } catch (e) {
+      console.warn('Publish failed:', e);
+      return false;
+    }
+  }
+
+  async function toggleVacancyLive(id) {
+    const v = vacancies.find(x => x.id === id || x.id === 'cloud-' + id);
+    if (!v) return;
+    if (!v.cloudId) {
+      const ok = await publishVacancyToWebsite(v);
+      renderVacancies(); closeDrawer();
+      showToast(ok ? 'success' : 'info', ok ? 'Published to website' : 'Not published',
+        ok ? '"' + v.title + '" is now live on the bluenestcare job board' : 'Log in with your approved account to publish roles');
+      return;
+    }
+    const goLive = v.status === 'paused';
+    try {
+      const { error } = await sb.from('jobs').update({ is_live: goLive }).eq('id', v.cloudId);
+      if (error) throw error;
+      v.status = goLive ? 'open' : 'paused';
+      renderVacancies(); closeDrawer();
+      showToast('success', goLive ? 'Back on the website' : 'Removed from website',
+        '"' + v.title + '" is ' + (goLive ? 'visible to candidates again' : 'hidden from the public job board (kept here)'));
+    } catch (e) {
+      showToast('info', 'Update failed', 'Could not reach the jobs table — check your connection');
+    }
+  }
 
   function activeVacancyFilter() {
     const chip = document.querySelector('#vacancyFilters .filter-chip.active');
@@ -3337,7 +3432,16 @@
     closeVacancyModal();
     ['nvTitle','nvClient','nvLocation','nvPay'].forEach(id => document.getElementById(id).value = '');
     renderVacancies();
-    showToast('success', 'Vacancy created', title + ' at ' + client + ' is live — AI matching has started');
+    const v = vacancies[0];
+    if (sb && sbSession) {
+      publishVacancyToWebsite(v).then(ok => {
+        renderVacancies();
+        showToast(ok ? 'success' : 'info', 'Vacancy created', title + ' at ' + client +
+          (ok ? ' — published to the website job board too' : ' — created here, but publishing to the website failed'));
+      });
+    } else {
+      showToast('success', 'Vacancy created', title + ' at ' + client + ' is live — AI matching has started');
+    }
   }
 
   function openDrawer(id) {
@@ -3355,10 +3459,13 @@
         <div class="match-score">${score}%</div>
       </div>`).join('');
     document.getElementById('drawerBody').innerHTML = `
-      <div style="display:flex; gap:10px; margin-bottom:20px;">
+      <div style="display:flex; gap:10px; margin-bottom:12px;">
         <button class="btn btn-primary" style="flex:1;" onclick="showToast('success','Shortlist sent','Top matches sent to ${v.client}'); closeDrawer();">Send shortlist to client</button>
         <button class="btn btn-secondary" onclick="showToast('success','Invitations sent','AI interview invitations sent to top matches')">Invite to AI interview</button>
       </div>
+      <button class="btn btn-secondary" style="width:100%; margin-bottom:20px;" onclick="toggleVacancyLive('${v.id}')">
+        ${v.cloudId ? (v.status === 'paused' ? '🌐 Publish back to website' : '🚫 Unpublish from website') : '🌐 Publish to website job board'}
+      </button>
       <div class="form-label" style="margin-bottom:10px;">AI-matched candidates</div>
       ${matches}
       <div class="form-label" style="margin:22px 0 10px;">Pipeline</div>
@@ -3996,6 +4103,7 @@
     document.getElementById('userAvatar').textContent = state.initials;
     document.getElementById('greetName').textContent = state.firstName;
     showToast('success', 'Welcome, ' + state.firstName, 'You\u2019re logged in to BlueNest AI');
+    if (sb && sbSession) syncVacanciesFromCloud();
   }
   function logout() {
     if (sb && sbSession) { sb.auth.signOut().catch(()=>{}); sbSession = null; }
